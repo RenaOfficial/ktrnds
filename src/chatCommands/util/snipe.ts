@@ -37,7 +37,7 @@ export default new ChatCommand({
           {
             author: {
               name: `${snipe.newMessage.author?.displayName || ''}(${snipe
-                .newMessage.author?.tag})}`,
+                .newMessage.author?.tag})`,
               icon_url: snipe.newMessage.author?.avatarURL()?.toString() || '',
             },
             description: `${snipe.oldMessage.content} => ${snipe.newMessage.content}`,
