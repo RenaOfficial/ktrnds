@@ -65,10 +65,6 @@ export class ExtendedClient extends Client {
       const command = await this.importFile(filePath);
       if (!command || !('name' in command)) continue;
 
-      console.log(
-        `\x1b[36mSlash command: /${command.name} registered successfully\x1b[0m`
-      );
-
       this.commands.set(command.name, <CommandType>command);
       slashCommands.push(<CommandType>command);
     }
@@ -104,10 +100,6 @@ export class ExtendedClient extends Client {
     for (const filePath of chatCommands) {
       const command = await this.importFile(filePath);
       if (!command || !('name' in command)) continue;
-
-      console.log(
-        `\x1b[36mChat command: /${command.name} registered successfully\x1b[0m`
-      );
 
       this.chatCommands.set(command.name, <ChatCommandType>command);
     }

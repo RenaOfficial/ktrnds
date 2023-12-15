@@ -1,6 +1,8 @@
-require('dotenv').config();
-import { ExtendedClient } from './lib/classes/ExtendedClient';
-export const client = new ExtendedClient();
+import { start } from './bot';
+import { server } from './server';
 
-console.clear();
-client.start();
+// Botを起動
+start();
+
+// ダッシュボードを起動
+server();
