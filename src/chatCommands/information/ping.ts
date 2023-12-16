@@ -26,17 +26,17 @@ export default new ChatCommand({
     const memUsage = (await osu.mem.info()).usedMemPercentage;
 
     const resources = [
-      '__<:ram:1185464482349191168> **RAM: **' + `\`${memUsage}%\``,
-      '__<:loading:1185464479107002368> **CPU: **' + `\`${cpuUsage}%\``,
+      '--<:ram:1185464482349191168> **RAM: **' + `\`${memUsage}%\``,
+      '--<:loading:1185464479107002368> **CPU: **' + `\`${cpuUsage}%\``,
     ];
 
     const fields = [
-      '_<:latency:1185464475692826624> **Latency: **' +
+      '-<:latency:1185464475692826624> **Latency: **' +
         `\`${client.ws.ping}ms\``,
-      '_<:cooldown:1185464473696337940>  **Edit Latency: **' +
+      '-<:cooldown:1185464473696337940>  **Edit Latency: **' +
         `\`${latency}ms\``,
-      `_<:trade:1185464469577535578> **Resources: **\n${resources
-        .map((msg) => msg.replace(' ', '<:space:1185464484685422652>'))
+      `-<:trade:1185464469577535578> **Resources: **\n${resources
+        .map((msg) => msg.replace('-', '<:space:1185464484685422652>'))
         .join('\n')}`,
     ];
 
@@ -48,7 +48,7 @@ export default new ChatCommand({
             {
               name: '<:shard:1185465377782771852> Shard [0]:',
               value: fields
-                .map((msg) => msg.replace(' ', '<:space:1185464484685422652>'))
+                .map((msg) => msg.replace('-', '<:space:1185464484685422652>'))
                 .join('\n'),
             },
           ],
