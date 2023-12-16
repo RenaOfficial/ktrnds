@@ -3,6 +3,7 @@ import { Colors } from 'discord.js';
 
 export default new ChatCommand({
   name: 'snipe',
+  aliases: ['s'],
   run: async ({ client, message, args }) => {
     if (!args[0] || args[0] !== 'e') {
       const sniped_message = client.snipes.get(message.channel.id);
