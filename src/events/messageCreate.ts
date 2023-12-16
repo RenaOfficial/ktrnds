@@ -8,7 +8,9 @@ export default new Event('messageCreate', async (message) => {
     message.author.bot ||
     !message.guild ||
     !message.content.startsWith(prefix)
-  ) {return;}
+  ) {
+    return;
+  }
 
   const [cmd, ...args] = message.content
     .slice(prefix.length)

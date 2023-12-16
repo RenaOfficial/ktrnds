@@ -2,14 +2,9 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     },
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
+    "lib": ["ESNext", "DOM"],
     "module": "CommonJS",
     "moduleResolution": "node",
     "target": "ESNext",
@@ -26,12 +21,6 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true
   },
-  "include": [
-    "src",
-    "src/**/*.d.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
-  ]
+  "include": ["src", "src/**/*.d.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }
