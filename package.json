@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "lint:prettier": "prettier --check .",
+    "up": "npm-run-all build start",
+    "build": "tsc -p . && tsc-alias",
+    "start": "node --trace-warnings dist/index.js",
+    "dev": "ts-node -r tsconfig-paths/register src/index.ts",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint ./src/* --ignore-path .prettierignore --max-warnings 0",
     "lint:typecheck": "tsc --pretty --noEmit",
-    "lint": "run-s lint:*",
-    "format:prettier": "yarn lint:prettier --write",
-    "format": "run-s format:prettier",
-    "build": "tsc -p .",
-    "start": "node dist/index.js",
-    "up": "run-s build start"
+    "format": "run-s format:eslint format:prettier",
+    "format:eslint": "yarn lint:eslint --fix",
+    "format:prettier": "prettier --write ."
   },
   "keywords": [],
   "author": "",
