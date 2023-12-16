@@ -17,7 +17,9 @@ export default new Event('messageCreate', async (message) => {
     .trim()
     .split(/ +/g);
 
-  const command = client.chatCommands.get(cmd.toLowerCase());
+  const command =
+    client.chatCommands.get(cmd.toLowerCase()) ||
+    client.chatCommands.find((c) => c.aliases?.includes(cmd.toLowerCase()));
 
   if (!command) return;
   await command.run({ client, message, args });

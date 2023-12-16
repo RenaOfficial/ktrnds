@@ -9,5 +9,6 @@ interface RunOptions {
 
 export type ChatCommandType = {
   name: string;
+  aliases?: string[];
   run: (options: RunOptions) => any;
 };
