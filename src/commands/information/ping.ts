@@ -27,8 +27,8 @@ export default new Command({
     const memUsage = (await osu.mem.info()).usedMemPercentage;
 
     const resources = [
-      '-<:space:1185464484685422652><:ram:1185464482349191168> **RAM: **' + `\`${memUsage}%\``,
-      '-<:space:1185464484685422652><:loading:1185464479107002368> **CPU: **' + `\`${cpuUsage}%\``,
+      '--<:ram:1185464482349191168> **RAM: **' + `\`${memUsage}%\``,
+      '--<:loading:1185464479107002368> **CPU: **' + `\`${cpuUsage}%\``,
     ];
 
     const fields = [
@@ -36,9 +36,7 @@ export default new Command({
         `\`${client.ws.ping}ms\``,
       '-<:cooldown:1185464473696337940>  **Edit Latency: **' +
         `\`${latency}ms\``,
-      `-<:trade:1185464469577535578> **Resources: **\n${resources
-        .map((msg) => msg.replace('-', '<:space:1185464484685422652>'))
-        .join('\n')}`,
+      `-<:trade:1185464469577535578> **Resources: **\n${resources.join('\n')}`,
     ];
 
     await interaction.editReply({
