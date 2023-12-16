@@ -18,7 +18,8 @@ export default new Command({
       ],
     });
 
-    const latency = new Date().getTime() - (await interaction.fetchReply()).createdTimestamp;
+    const latency =
+      new Date().getTime() - (await interaction.fetchReply()).createdTimestamp;
 
     await interaction.editReply({
       embeds: [

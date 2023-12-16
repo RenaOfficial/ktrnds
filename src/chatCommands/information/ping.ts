@@ -15,9 +15,9 @@ export default new ChatCommand({
         },
       ],
       allowedMentions: {
-        parse: []
-      }
-    })
+        parse: [],
+      },
+    });
 
     const latency = new Date().getTime() - msg.createdTimestamp;
 
@@ -30,6 +30,6 @@ export default new ChatCommand({
           footer: footer(),
         },
       ],
-    })
+    });
   },
 });
