@@ -27,8 +27,8 @@ export default new Command({
     const memUsage = (await osu.mem.info()).usedMemPercentage;
 
     const resources = [
-      '--<:ram:1185464482349191168> **RAM: **' + `\`${memUsage}%\``,
-      '--<:loading:1185464479107002368> **CPU: **' + `\`${cpuUsage}%\``,
+      '-<:space:1185464484685422652><:ram:1185464482349191168> **RAM: **' + `\`${memUsage}%\``,
+      '-<:space:1185464484685422652><:loading:1185464479107002368> **CPU: **' + `\`${cpuUsage}%\``,
     ];
 
     const fields = [
