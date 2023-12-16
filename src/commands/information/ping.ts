@@ -18,13 +18,13 @@ export default new Command({
       ],
     });
 
-    const ratency = new Date().getTime() - interaction.createdTimestamp;
+    const latency = new Date().getTime() - (await interaction.fetchReply()).createdTimestamp;
 
     await interaction.editReply({
       embeds: [
         {
           title: '🏓 Pong!',
-          description: `Client ratency: ${client.ws.ping}ms\nMessage Edit ratency: ${ratency}ms`,
+          description: `Client Latency: ${client.ws.ping}ms\nMessage Edit Latency: ${latency}ms`,
           color: Colors.Aqua,
           footer: footer(),
         },
