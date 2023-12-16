@@ -19,16 +19,11 @@
   "dependencies": {
     "discord.js": "^14.13.0",
     "dotenv": "^16.3.1",
-    "express": "^4.18.2",
     "glob": "7.2.3"
   },
   "devDependencies": {
-    "@types/express": "^4.17.21",
     "@types/glob": "^8.1.0",
     "@types/node": "^20.9.0",
-    "del": "^7.1.0",
-    "gulp": "^4.0.2",
-    "gulp-typescript": "^6.0.0-alpha.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.1.1",
     "typescript": "^5.2.2"
