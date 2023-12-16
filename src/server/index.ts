@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from 'express';
-import { client } from '../bot';
+import { client, start } from '../bot';
+import { ready } from '../bot/lib/functions/ready';
 
 const app: Express = express();
 const port: number = 3001;
@@ -10,7 +11,9 @@ export function server() {
   app.get('/', (req: Request, res: Response) => {
     res.header('Access-Control-Allow-Origin', '*');
     try {
-      // ボットが既にログインしている場合は再接続
+      console.log(
+        '\x1b[33mWrite the bot status upon request from the dashboard\x1b[0m'
+      );
       if (!client.isReady()) {
         res.json({
           status: true,
@@ -34,21 +37,23 @@ export function server() {
   });
 
   app.post('/actions/start', (req: Request, res: Response) => {
+    res.header('Access-Control-Allow-Origin', '*');
     try {
       if (!client.isReady()) {
-        client.login(process.env.CLIENT_TOKEN).then(() => {
-          console.log(
-            '\x1b[33mStart the bot upon request from the dashboard\x1b[0m'
-          );
-          res.json({
-            status: true,
-            message: 'Bot started successfully',
-          });
+        start();
+        client.isReady = () => true;
+        ready();
+        console.log(
+          '\x1b[33mStart the bot upon request from the dashboard\x1b[0m'
+        );
+        res.json({
+          status: true,
+          message: 'Bot started successfully',
         });
       }
       res.json({
         status: true,
-        message: 'Bot started successfully',
+        message: 'Bot is already started',
       });
     } catch (error) {
       res.json({
@@ -59,30 +64,20 @@ export function server() {
   });
 
   app.post('/actions/restart', (req: Request, res: Response) => {
+    res.header('Access-Control-Allow-Origin', '*');
     try {
-      if (client.isReady()) {
-        console.log(
-          '\x1b[33mRestart the bot upon request from the dashboard\x1b[0m'
-        );
-        client.destroy().then(() => {
-          client.login(process.env.CLIENT_TOKEN).then(() => {
-            res.json({
-              status: true,
-              message: 'Bot restarted successfully',
-            });
-          });
+      console.log(
+        '\x1b[33mRestart the bot upon request from the dashboard\x1b[0m'
+      );
+      client.destroy().then(() => {
+        start();
+        client.isReady = () => true;
+        ready();
+        res.json({
+          status: true,
+          message: 'Bot restarted successfully',
         });
-      } else {
-        console.log(
-          '\x1b[33mRestart(Start) the bot upon request from the dashboard\x1b[0m'
-        );
-        client.login(process.env.CLIENT_TOKEN).then(() => {
-          res.json({
-            status: true,
-            message: 'Bot restarted successfully',
-          });
-        });
-      }
+      });
     } catch (error) {
       res.json({
         status: false,
@@ -92,12 +87,14 @@ export function server() {
   });
 
   app.post('/actions/stop', (req: Request, res: Response) => {
+    res.header('Access-Control-Allow-Origin', '*');
     try {
       if (client.isReady()) {
         console.log(
           '\x1b[33mStop the bot upon request from the dashboard\x1b[0m'
         );
         client.destroy().then(() => {
+          client.isReady = () => false;
           res.json({
             status: true,
             message: 'Bot stopped successfully',
@@ -106,7 +103,7 @@ export function server() {
       } else {
         res.json({
           status: true,
-          message: 'Bot stopped successfully',
+          message: 'Bot is already stopped',
         });
       }
     } catch (error) {
