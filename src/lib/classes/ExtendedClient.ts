@@ -7,11 +7,11 @@ import {
   Message,
   PartialMessage,
 } from 'discord.js';
-import { CommandType } from '../interfaces/Command';
-import { Event } from './Event';
+import { CommandType } from '@/lib/interfaces/Command';
+import { Event } from '@/lib/classes/Event';
 import { promisify } from 'util';
 import glob from 'glob';
-import { ChatCommandType } from '../interfaces/ChatCommand';
+import { ChatCommandType } from '@/lib/interfaces/ChatCommand';
 
 const globPromise = promisify(glob);
 

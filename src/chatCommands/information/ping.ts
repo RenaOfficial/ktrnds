@@ -1,4 +1,4 @@
-import { ChatCommand } from '../../lib/classes/ChatCommand';
+import { ChatCommand } from '@/lib/classes/ChatCommand';
 
 export default new ChatCommand({
   name: 'ping',

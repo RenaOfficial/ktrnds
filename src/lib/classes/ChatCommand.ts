@@ -1,4 +1,4 @@
-import { ChatCommandType } from '../interfaces/ChatCommand';
+import { ChatCommandType } from '@/lib/interfaces/ChatCommand';
 
 export class ChatCommand {
   constructor(commandOptions: ChatCommandType) {

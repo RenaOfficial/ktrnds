@@ -1,5 +1,5 @@
-import { ChatInputApplicationCommandData, Message } from 'discord.js';
-import { ExtendedClient } from '../classes/ExtendedClient';
+import { Message } from 'discord.js';
+import { ExtendedClient } from '@/lib/classes/ExtendedClient';
 
 interface RunOptions {
   client: ExtendedClient;

@@ -1,5 +1,5 @@
-import { Event } from '../lib/classes/Event';
-import { client } from '../index';
+import { Event } from '@/lib/classes/Event';
+import { client } from '@/index';
 
 export default new Event('messageCreate', async (message) => {
   const prefix = '.';

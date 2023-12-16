@@ -2,8 +2,8 @@ import {
   ChatInputCommandInteraction,
   CommandInteractionOptionResolver,
 } from 'discord.js';
-import { client } from '../index';
-import { Event } from '../lib/classes/Event';
+import { client } from '@/index';
+import { Event } from '@/lib/classes/Event';
 
 export default new Event('interactionCreate', async (interaction) => {
   if (interaction.isCommand()) {

@@ -4,7 +4,7 @@ import {
   CommandInteractionOptionResolver,
   PermissionResolvable,
 } from 'discord.js';
-import { ExtendedClient } from '../classes/ExtendedClient';
+import { ExtendedClient } from '@/lib/classes/ExtendedClient';
 
 interface RunOptions {
   client: ExtendedClient;

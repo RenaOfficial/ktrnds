@@ -1,5 +1,5 @@
 import { APIEmbedFooter, Colors } from 'discord.js';
-import { client } from '../../index';
+import { client } from '@/index';
 
 const footer = (): APIEmbedFooter => {
   return {

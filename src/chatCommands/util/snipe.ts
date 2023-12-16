@@ -1,4 +1,4 @@
-import { ChatCommand } from '../../lib/classes/ChatCommand';
+import { ChatCommand } from '@/lib/classes/ChatCommand';
 import { Colors } from 'discord.js';
 
 export default new ChatCommand({
