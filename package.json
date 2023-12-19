@@ -10,7 +10,11 @@
     "lint": "run-p lint:*",
     "lint:typecheck": "tsc --pretty --noEmit",
     "format": "run-s format:prettier",
-    "format:prettier": "prettier --write ."
+    "format:prettier": "prettier --write .",
+    "git:fetch": "git fetch origin",
+    "git:pull": "git pull origin main",
+    "pm2:restart": "pm2 restart \"ktrnds\"",
+    "restart": "run-s git:fetch git:pull pm2:restart"
   },
   "keywords": [],
   "author": "",
