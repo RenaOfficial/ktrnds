@@ -1,6 +1,6 @@
 import { Colors, Message } from 'discord.js';
 import { client } from '@/index';
-import { footer } from '@/lib/functions/Embed';
+import { footer } from '@/lib/handlers/component/Embed';
 
 export async function messageSnipe({
   argument,

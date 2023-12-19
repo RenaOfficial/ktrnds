@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, Colors, Message } from 'discord.js';
-import { footer } from '@/lib/functions/Embed';
+import { footer } from '@/lib/handlers/component/Embed';
 import osu from 'node-os-utils';
 import { ExtendedClient } from '@/lib/classes/ExtendedClient';
 import { client } from '@/index';

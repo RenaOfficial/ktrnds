@@ -1,6 +1,6 @@
 import { ApplicationCommandType, Colors } from 'discord.js';
 import { Command } from '@/lib/classes/Command';
-import { footer } from '@/lib/functions/Embed';
+import { footer } from '@/lib/handlers/component/Embed';
 import { sendReply } from '@/lib/handlers/commands/ping';
 
 const pingingEmbed = {
