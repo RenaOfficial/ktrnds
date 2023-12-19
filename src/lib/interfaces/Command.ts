@@ -2,18 +2,27 @@ import {
   ChatInputApplicationCommandData,
   ChatInputCommandInteraction,
   CommandInteractionOptionResolver,
+  Message,
   PermissionResolvable,
 } from 'discord.js';
 import { ExtendedClient } from '@/lib/classes/ExtendedClient';
 
-interface RunOptions {
+interface SlashCommandRunOptions {
   client: ExtendedClient;
   interaction: ChatInputCommandInteraction;
   args: CommandInteractionOptionResolver;
 }
 
+interface ChatCommandRunOptions {
+  client: ExtendedClient;
+  message: Message;
+  args: string[];
+}
+
 export type CommandType = ChatInputApplicationCommandData & {
   userPermissions?: PermissionResolvable[];
   ephemeral?: boolean;
-  run: (options: RunOptions) => any;
+  aliases?: string[];
+  slash?: (options: SlashCommandRunOptions) => any;
+  chat?: (options: ChatCommandRunOptions) => any;
 };

@@ -1,62 +1,38 @@
 import { ApplicationCommandType, Colors } from 'discord.js';
 import { Command } from '@/lib/classes/Command';
 import { footer } from '@/lib/functions/Embed';
-import osu from 'node-os-utils';
-import { client } from '@/index';
+import { sendReply } from '@/lib/handlers/commands/ping';
+
+const pingingEmbed = {
+  embeds: [
+    {
+      title: '🏓 Pinging...',
+      color: Colors.Red,
+      footer: footer(),
+    },
+  ],
+  allowedMentions: {
+    parse: [],
+  },
+};
 
 export default new Command({
   name: 'ping',
   description: "Displays the Bot's ping value.",
   type: ApplicationCommandType.ChatInput,
   ephemeral: false,
-  run: async ({ client, interaction }) => {
-    await interaction.followUp({
-      embeds: [
-        {
-          title: '🏓 Pinging...',
-          color: Colors.Red,
-          footer: footer(),
-        },
-      ],
-    });
+  slash: async ({ interaction }) => {
+    await interaction.followUp(pingingEmbed);
 
-    const latency =
-      new Date().getTime() - (await interaction.fetchReply()).createdTimestamp;
+    const responseData = await sendReply({ data: interaction });
 
-    const cpuUsage = await osu.cpu.usage();
-    const memUsage = (await osu.mem.info()).usedMemPercentage;
+    await interaction.editReply(responseData);
+  },
+  chat: async ({ message }) => {
+    const msg = await message.reply(pingingEmbed);
 
-    const resources = [
-      '-<:space:1185464484685422652><:ram:1185464482349191168> **RAM: **' +
-        `\`${memUsage}%\``,
-      '-<:space:1185464484685422652><:loading:1185464479107002368> **CPU: **' +
-        `\`${cpuUsage}%\``,
-    ];
+    const responseData = await sendReply({ data: message });
 
-    const fields = [
-      '-<:latency:1185464475692826624> **Latency: **' +
-        `\`${client.ws.ping}ms\``,
-      '-<:cooldown:1185464473696337940>  **Edit Latency: **' +
-        `\`${latency}ms\``,
-      `-<:trade:1185464469577535578> **Resources: **\n${resources.join('\n')}`,
-    ];
-
-    await interaction.editReply({
-      embeds: [
-        {
-          title: 'Bot Status:',
-          fields: [
-            {
-              name: '<:shard:1185465377782771852> Shard [0]:',
-              value: fields
-                .map((msg) => msg.replace('-', '<:space:1185464484685422652>'))
-                .join('\n'),
-            },
-          ],
-          color: Colors.Aqua,
-          footer: footer(),
-        },
-      ],
-    });
+    await msg.edit(responseData);
   },
 });

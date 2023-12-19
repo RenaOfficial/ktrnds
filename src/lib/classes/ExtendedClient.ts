@@ -11,13 +11,11 @@ import { CommandType } from '@/lib/interfaces/Command';
 import { Event } from '@/lib/classes/Event';
 import { promisify } from 'util';
 import glob from 'glob';
-import { ChatCommandType } from '@/lib/interfaces/ChatCommand';
 
 const globPromise = promisify(glob);
 
 export class ExtendedClient extends Client {
   public commands: Collection<string, CommandType> = new Collection();
-  public chatCommands: Collection<string, ChatCommandType> = new Collection();
   public snipes: Collection<string, Message<boolean> | PartialMessage> =
     new Collection();
   public edit_snipes: Collection<
@@ -50,9 +48,7 @@ export class ExtendedClient extends Client {
 
   private async importFile(
     filePath: string
-  ): Promise<
-    CommandType | ChatCommandType | Event<keyof ClientEvents> | undefined
-  > {
+  ): Promise<CommandType | Event<keyof ClientEvents> | undefined> {
     return (await import(filePath))?.default;
   }
 
@@ -91,17 +87,6 @@ export class ExtendedClient extends Client {
       if (event && 'event' in event) {
         this.on(event.event, event.run);
       }
-    }
-
-    const chatCommands = await globPromise(
-      `${__dirname}/../../chatCommands/**/*{.ts,.js}`
-    );
-
-    for (const filePath of chatCommands) {
-      const command = await this.importFile(filePath);
-      if (!command || !('name' in command)) continue;
-
-      this.chatCommands.set(command.name, <ChatCommandType>command);
     }
   }
 }
