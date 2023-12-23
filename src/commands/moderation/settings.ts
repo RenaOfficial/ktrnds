@@ -17,7 +17,21 @@ export default new Command({
   chat: async ({ message, client, args }) => {
     /* argsについて */
     /* 0は設定の種類 */
-    if (!args[0]) return;
+    if (!args[0])
+      return await message.reply({
+        embeds: [
+          {
+            title: 'エラーが発生しました',
+            description: '設定の種類を指定してください',
+            color: Colors.Red,
+            footer: footer(),
+          },
+        ],
+        allowedMentions: {
+          parse: [],
+        },
+      });
+    
     switch (args[0]) {
       case 'reply':
         /* 1は操作の種類(set/del/list)*/
@@ -59,6 +73,20 @@ export default new Command({
           });
         }
         break;
+      default:
+        return await message.reply({
+          embeds: [
+            {
+              title: 'エラーが発生しました',
+              description: 'そのような設定項目はありません',
+              color: Colors.Red,
+              footer: footer(),
+            },
+          ],
+          allowedMentions: {
+            parse: [],
+          },
+        });
     }
   },
 });

@@ -1,4 +1,9 @@
-import { APIEmbed, ChatInputCommandInteraction, Colors, Message } from 'discord.js';
+import {
+  APIEmbed,
+  ChatInputCommandInteraction,
+  Colors,
+  Message,
+} from 'discord.js';
 import { client } from '@/index';
 import { footer } from '@/lib/handlers/component/Embed';
 

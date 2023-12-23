@@ -48,7 +48,7 @@ export class ExtendedClient extends Client {
     });
     mongoose.connect(process.env.DATABASE_CONNECTION_URI).then(() => {
       console.log(`\x1b[36mSuccessfully connected to database\x1b[0m`);
-    })
+    });
   }
 
   private async importFile(
