@@ -1,9 +1,11 @@
 import {
   ChatInputCommandInteraction,
+  Colors,
   CommandInteractionOptionResolver,
 } from 'discord.js';
 import { client } from '@/index';
 import { Event } from '@/lib/classes/Event';
+import { footer } from '@/lib/handlers/component/Embed';
 
 export default new Event('interactionCreate', async (interaction) => {
   if (interaction.isCommand()) {
@@ -16,7 +18,15 @@ export default new Event('interactionCreate', async (interaction) => {
       !interaction.guild
     ) {
       return await interaction.reply({
-        content: 'An unexpected error has occurred.',
+        embeds: [
+          {
+            title: 'エラーが発生しました',
+            description:
+              '実行したコマンドはスラッシュコマンドに対応していません',
+            color: Colors.Red,
+            footer: footer(),
+          },
+        ],
         ephemeral: true,
       });
     }

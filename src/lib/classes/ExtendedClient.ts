@@ -11,6 +11,8 @@ import { CommandType } from '@/lib/interfaces/Command';
 import { Event } from '@/lib/classes/Event';
 import { promisify } from 'util';
 import glob from 'glob';
+import mongoose from 'mongoose';
+import * as process from 'process';
 
 const globPromise = promisify(glob);
 
@@ -44,6 +46,9 @@ export class ExtendedClient extends Client {
     this.login(process.env.CLIENT_TOKEN).then(() => {
       console.log(`\x1b[32mLogged in successfully\x1b[0m`);
     });
+    mongoose.connect(process.env.DATABASE_CONNECTION_URI).then(() => {
+      console.log(`\x1b[36mSuccessfully connected to database\x1b[0m`);
+    })
   }
 
   private async importFile(
