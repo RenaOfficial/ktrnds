@@ -1,4 +1,4 @@
-import { Colors, Message } from 'discord.js';
+import { APIEmbed, Colors, EmbedBuilder, Message } from 'discord.js';
 import { client } from '@/index';
 import { footer } from '@/lib/handlers/component/Embed';
 
@@ -25,19 +25,35 @@ export async function messageSnipe({
         },
       });
     }
-    return await message.reply({
-      embeds: [
-        {
-          author: {
-            name: `${sniped_message.author?.displayName || ''}(${sniped_message
-              .author?.tag})`,
-            icon_url: sniped_message.author?.avatarURL()?.toString() || '',
-          },
-          description: `${sniped_message.content}`,
-          timestamp: new Date(sniped_message.createdTimestamp).toISOString(),
-          color: Colors.Aqua,
+
+    const attachments = sniped_message.attachments.size
+      ? sniped_message.attachments.map((attachment) => attachment.proxyURL)
+      : undefined;
+
+    const embeds: APIEmbed[] = [
+      {
+        author: {
+          name: `${sniped_message.author?.displayName || ''}(${sniped_message
+            .author?.tag})`,
+          icon_url: sniped_message.author?.avatarURL()?.toString() || '',
         },
-      ],
+        description: `${sniped_message.content}`,
+        timestamp: new Date(sniped_message.createdTimestamp).toISOString(),
+        color: Colors.Aqua,
+      },
+    ];
+
+    attachments?.forEach((attachment) => {
+      embeds.push({
+        image: {
+          url: attachment,
+        },
+        color: Colors.Aqua,
+      });
+    });
+
+    return await message.reply({
+      embeds: embeds,
       allowedMentions: {
         parse: [],
       },
