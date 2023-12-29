@@ -27,6 +27,9 @@ export class ExtendedClient extends Client {
       newMessage: Message<boolean> | PartialMessage;
     }
   > = new Collection();
+  calculateLevelXp(level: number): number {
+    return 100 * level || 1;
+  }
 
   public constructor() {
     super({
@@ -35,6 +38,7 @@ export class ExtendedClient extends Client {
         IntentsBitField.Flags.GuildMembers,
         IntentsBitField.Flags.MessageContent,
         IntentsBitField.Flags.GuildMessages,
+        IntentsBitField.Flags.GuildPresences,
       ],
     });
   }
@@ -85,7 +89,7 @@ export class ExtendedClient extends Client {
     });
 
     const eventFiles = await globPromise(
-      `${__dirname}/../../events/*{.ts,.js}`
+      `${__dirname}/../../events/**/*{.ts,.js}`
     );
     for (const filePath of eventFiles) {
       const event = await this.importFile(filePath);
