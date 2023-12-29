@@ -49,7 +49,7 @@ export default new Command({
     const data = await rank.build();
     const attachment = new AttachmentBuilder(data);
 
-    await interaction.followUp({
+    return await interaction.followUp({
       embeds: [
         {
           color: Colors.Aqua,
@@ -86,7 +86,7 @@ export default new Command({
     const data = await rank.build();
     const attachment = new AttachmentBuilder(data);
 
-    await message.reply({
+    return await message.reply({
       embeds: [
         {
           color: Colors.Aqua,

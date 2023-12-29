@@ -23,6 +23,6 @@ export type CommandType = ChatInputApplicationCommandData & {
   userPermissions?: PermissionResolvable[];
   ephemeral?: boolean;
   aliases?: string[];
-  slash?: (options: SlashCommandRunOptions) => any;
-  chat?: (options: ChatCommandRunOptions) => any;
+  slash: (options: SlashCommandRunOptions) => any;
+  chat: (options: ChatCommandRunOptions) => any;
 };
