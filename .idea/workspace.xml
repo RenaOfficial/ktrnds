@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de3c5624-0b45-4501-964f-515801f39154" name="変更" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commands/information/rank.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/information/rank.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/events/interactionCreate/interactionCreate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/events/interactionCreate/interactionCreate.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/events/messageCreate/level.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/events/messageCreate/level.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/interfaces/Command.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/interfaces/Command.ts" afterDir="false" />
-    </list>
+    <list default="true" id="de3c5624-0b45-4501-964f-515801f39154" name="変更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,7 +93,7 @@
       <workItem from="1702914809379" duration="466000" />
       <workItem from="1702969327461" duration="4599000" />
       <workItem from="1703153184384" duration="5564000" />
-      <workItem from="1703842404385" duration="7465000" />
+      <workItem from="1703842404385" duration="7766000" />
     </task>
     <servers />
   </component>
