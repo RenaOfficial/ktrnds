@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "up": "npm-run-all build start",
+    "reload": "pm2 restart ktrnds",
     "build": "tsc -p . && tsc-alias",
     "start": "node --trace-warnings dist/index.js",
-    "dev": "ts-node -r tsconfig-paths/register src/index.ts",
+    "dev": "run-s build reload",
     "lint": "run-p lint:*",
     "lint:typecheck": "tsc --pretty --noEmit",
     "format": "run-s format:prettier",

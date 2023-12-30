@@ -52,7 +52,7 @@ export default new Command({
     }
   },
   chat: async ({ client, message, args }) => {
-    if (!args[0] || args[0] !== ('event' || 'all'))
+    if (!args[0] || (args[0] !== 'event' && args[0] !== 'all'))
       return message.reply({
         embeds: [
           {

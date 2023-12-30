@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="de3c5624-0b45-4501-964f-515801f39154" name="変更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/events/interactionCreate/interactionCreate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/events/interactionCreate/interactionCreate.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/events/messageCreate/chatCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/events/messageCreate/chatCommand.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/events/ready/ready.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/events/ready/ready.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/classes/ExtendedClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/classes/ExtendedClient.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/interfaces/Command.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/interfaces/Command.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commands/owner/reload.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/owner/reload.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +99,7 @@
       <workItem from="1703153184384" duration="5564000" />
       <workItem from="1703842404385" duration="8753000" />
       <workItem from="1703917645282" duration="3051000" />
-      <workItem from="1703935197069" duration="2650000" />
+      <workItem from="1703935197069" duration="4179000" />
     </task>
     <servers />
   </component>
