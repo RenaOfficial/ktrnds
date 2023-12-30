@@ -21,7 +21,10 @@ export default new Event('messageCreate', async (message) => {
     client.commands.get(cmd.toLowerCase()) ||
     client.commands.find((c) => c.aliases?.includes(cmd.toLowerCase()));
 
-  if (!command || !command.chat) return;
+  if (!command) return;
+
+  if (command.isOwnerCommand && message.author.id !== '1004365048887660655')
+    return;
 
   await command.chat({ client, message, args });
 });

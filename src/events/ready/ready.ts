@@ -6,6 +6,7 @@ export default new Event('ready', async () => {
 
   client.user?.setActivity({
     name: `Produced by Rey`,
-    type: 0,
+    state: '/help | Produced by Rey',
+    type: 4,
   });
 });

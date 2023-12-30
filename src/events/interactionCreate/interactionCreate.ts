@@ -26,11 +26,26 @@ export default new Event('interactionCreate', async (interaction) => {
       });
     }
 
+    if (
+      command.isOwnerCommand &&
+      interaction.user.id !== '1004365048887660655'
+    ) {
+      return await interaction.reply({
+        embeds: [
+          {
+            title: 'エラーが発生しました',
+            description: 'このコマンドはBot管理者限定です',
+            color: Colors.Red,
+            footer: footer(),
+          },
+        ],
+      });
+    }
+
     await interaction.deferReply({
       ephemeral: command?.ephemeral || false,
     });
 
-    // @ts-ignore
     await command.slash({
       args: interaction.options as CommandInteractionOptionResolver,
       client,

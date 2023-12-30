@@ -27,6 +27,7 @@ export class ExtendedClient extends Client {
       newMessage: Message<boolean> | PartialMessage;
     }
   > = new Collection();
+
   calculateLevelXp(level: number): number {
     return 100 * level || 1;
   }
@@ -61,11 +62,24 @@ export class ExtendedClient extends Client {
     return (await import(filePath))?.default;
   }
 
+  public async loadEvents() {
+    const eventFiles = await globPromise(
+      `${__dirname}/../../events/**/*{.ts,.js}`
+    );
+    for (const filePath of eventFiles) {
+      const event = await this.importFile(filePath);
+      if (event && 'event' in event) {
+        this.on(event.event, event.run);
+      }
+    }
+  }
+
   private async registerModules(): Promise<void> {
     const slashCommands: ApplicationCommandDataResolvable[] = [];
     const commandFiles = await globPromise(
       __dirname + `/../../commands/*/*{.ts,.js}`
     );
+
     for (const filePath of commandFiles) {
       const command = await this.importFile(filePath);
       if (!command || !('name' in command)) continue;
@@ -88,14 +102,6 @@ export class ExtendedClient extends Client {
         });
     });
 
-    const eventFiles = await globPromise(
-      `${__dirname}/../../events/**/*{.ts,.js}`
-    );
-    for (const filePath of eventFiles) {
-      const event = await this.importFile(filePath);
-      if (event && 'event' in event) {
-        this.on(event.event, event.run);
-      }
-    }
+    await this.loadEvents();
   }
 }
