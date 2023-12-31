@@ -45,7 +45,6 @@ export default new Command({
     const filePath = response.url;
     const parts = filePath.split('/');
     const fileName = parts[parts.length - 1];
-    fileName.replace('?', '');
 
     const resizedImage = await sharp(imageBinary).resize(1920, 1008).toBuffer();
 
