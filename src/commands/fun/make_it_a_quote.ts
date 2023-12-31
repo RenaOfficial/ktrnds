@@ -47,7 +47,7 @@ export default new Command({
     const fileName = parts[parts.length - 1];
     fileName.replace('?', '');
 
-    const resizedImage = await sharp(imageBinary).resize(1920, 1080).toBuffer();
+    const resizedImage = await sharp(imageBinary).resize(1920, 1008).toBuffer();
 
     writeFileSync(`${__dirname}/../../images/quote/${fileName}`, resizedImage);
 
