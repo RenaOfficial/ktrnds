@@ -47,7 +47,6 @@ export default new Event('interactionCreate', async (interaction) => {
     });
 
     await command.slash({
-      args: interaction.options as CommandInteractionOptionResolver,
       client,
       interaction: interaction as ChatInputCommandInteraction,
     });

@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de3c5624-0b45-4501-964f-515801f39154" name="変更" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commands/developer/reload.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/developer/reload.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commands/fun/make_it_a_quote.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/fun/make_it_a_quote.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commands/information/help.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/information/help.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commands/information/ping.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/information/ping.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commands/information/rank.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/information/rank.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commands/utility/snipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/utility/snipe.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/interfaces/Command.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/interfaces/Command.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/events/interactionCreate/interactionCreate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/events/interactionCreate/interactionCreate.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +97,7 @@
       <workItem from="1703153184384" duration="5564000" />
       <workItem from="1703842404385" duration="8753000" />
       <workItem from="1703917645282" duration="3051000" />
-      <workItem from="1703935197069" duration="16810000" />
+      <workItem from="1703935197069" duration="16897000" />
     </task>
     <servers />
   </component>
