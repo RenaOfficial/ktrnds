@@ -11,18 +11,15 @@ export default new Event('interactionCreate', async (interaction) => {
   if (interaction.isCommand()) {
     const command = client.commands.get(interaction.commandName);
 
-    if (!command || !interaction.channel || !interaction.guild) {
+    if (!command) {
       return await interaction.reply({
         embeds: [
           {
-            title: 'エラーが発生しました',
-            description:
-              '実行したコマンドはスラッシュコマンドに対応していません',
+            title: '予期せぬエラーが発生しました',
             color: Colors.Red,
             footer: footer(),
           },
         ],
-        ephemeral: true,
       });
     }
 

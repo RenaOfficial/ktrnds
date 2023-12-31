@@ -9,7 +9,7 @@ export default new Command({
   slash: async ({ client, interaction }) => {
     if (!interaction.isMessageContextMenuCommand()) return;
 
-    await interaction.reply({
+    await interaction.followUp({
       embeds: [
         {
           title: '生成中',
