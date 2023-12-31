@@ -2,6 +2,9 @@ import { Command } from '@/lib/classes/Command';
 import axios from 'axios';
 import { ApplicationCommandType, Colors } from 'discord.js';
 import { footer } from '@/lib/handlers/component/Embed';
+import { unlinkSync, writeFileSync } from 'fs';
+import { readFile } from 'fs/promises';
+import sharp from 'sharp';
 
 export default new Command({
   name: 'Make it a Quote',
@@ -9,15 +12,18 @@ export default new Command({
   slash: async ({ client, interaction }) => {
     if (!interaction.isMessageContextMenuCommand()) return;
 
-    await interaction.followUp({
-      embeds: [
-        {
-          title: '生成中',
-          color: Colors.Blue,
-          footer: footer(),
-        },
-      ],
-    });
+    if (!interaction.targetMessage) {
+      return await interaction.followUp({
+        embeds: [
+          {
+            title: 'エラーが発生しました',
+            description: 'そのメッセージにはテキストが含まれていません',
+            color: Colors.Red,
+            footer: footer(),
+          },
+        ],
+      });
+    }
 
     const response = (
       await axios.post('https://api.voids.top/fakequote', {
@@ -30,19 +36,42 @@ export default new Command({
       })
     ).data;
 
-    await interaction.editReply({
+    const imageBinary: ArrayBuffer = (
+      await axios.get(response.url, {
+        responseType: 'arraybuffer',
+      })
+    ).data;
+
+    const filePath = response.url;
+    const parts = filePath.split('/');
+    const fileName = parts[parts.length - 1];
+
+    const resizedImage = await sharp(imageBinary).resize(1920, 1080).toBuffer();
+
+    writeFileSync(
+      `${__dirname}/../../images/quote/${fileName}`,
+      resizedImage,
+      'binary'
+    );
+
+    const file = await readFile(`${__dirname}/../../images/quote/${fileName}`);
+
+    await interaction.followUp({
       content: `[生成元のメッセージ](${interaction.targetMessage.url})`,
-      embeds: [
+      embeds: [],
+      files: [
         {
-          title: '生成完了',
-          image: {
-            url: response.url,
-          },
-          color: Colors.Aqua,
-          footer: footer(),
+          attachment: file,
+          name: 'quote.jpg',
         },
       ],
     });
+
+    unlinkSync(`${__dirname}/../../images/quote/${fileName}`);
   },
   chat: async () => {},
 });
+
+function readFileSync(imagePath: any) {
+  throw new Error('Function not implemented.');
+}
