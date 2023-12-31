@@ -22,6 +22,7 @@ export default new Command({
     },
   ],
   slash: async ({ client, interaction }) => {
+    if (!interaction.isChatInputCommand()) return;
     if (!interaction.guild) {
       return await interaction.followUp({
         content: 'このコマンドはサーバー内でのみ実行可能です',

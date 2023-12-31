@@ -7,6 +7,7 @@ export default new Command({
   name: 'help',
   description: 'コマンドの使用方法を表示します',
   slash: async ({ client, interaction }) => {
+    if (!interaction.isChatInputCommand()) return;
     const commands = await getCommands();
 
     const categories = [

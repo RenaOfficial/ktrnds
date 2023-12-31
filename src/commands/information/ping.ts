@@ -22,6 +22,7 @@ export default new Command({
   type: ApplicationCommandType.ChatInput,
   ephemeral: false,
   slash: async ({ interaction }) => {
+    if (!interaction.isChatInputCommand()) return;
     await interaction.followUp(pingingEmbed);
 
     const responseData = await sendReply({ data: interaction });

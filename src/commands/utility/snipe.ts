@@ -24,6 +24,7 @@ export default new Command({
   ],
   aliases: ['s'],
   slash: async ({ client, interaction }) => {
+    if (!interaction.isChatInputCommand()) return;
     const args = interaction.options.getString('snipe_type');
     const argument = args ? 'e' : 'd';
 

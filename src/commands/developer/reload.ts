@@ -20,6 +20,7 @@ export default new Command({
     },
   ],
   slash: async ({ client, interaction }) => {
+    if (!interaction.isChatInputCommand()) return;
     const cmd = interaction.options.getSubcommand();
 
     switch (cmd) {

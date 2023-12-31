@@ -1,5 +1,8 @@
 import { CommandType } from '@/lib/interfaces/Command';
-import { ApplicationCommandOptionType, ApplicationCommandType } from 'discord.js';
+import {
+  ApplicationCommandOptionType,
+  ApplicationCommandType,
+} from 'discord.js';
 import glob from 'glob';
 import { promisify } from 'util';
 import { client } from '@/index';
