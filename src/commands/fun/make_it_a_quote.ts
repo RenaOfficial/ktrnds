@@ -28,7 +28,7 @@ export default new Command({
     const response = (
       await axios.post('https://api.voids.top/fakequote', {
         text: interaction.targetMessage.content,
-        avatar: interaction.targetMessage.author.avatarURL(),
+        avatar: interaction.targetMessage.author.displayAvatarURL(),
         username: interaction.targetMessage.author.tag,
         display_name: interaction.targetMessage.author.displayName,
         color: true,
