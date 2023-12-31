@@ -102,6 +102,7 @@ export default new Command({
                     };
                   })
                 )
+                .setPlaceholder('カテゴリーを選択')
                 .setCustomId('category_select')
             ),
             new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
@@ -118,6 +119,7 @@ export default new Command({
                       };
                     })
                 )
+                .setPlaceholder('コマンドを選択')
             ),
           ],
         });
