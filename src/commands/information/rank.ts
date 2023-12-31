@@ -13,11 +13,11 @@ import { footer } from '@/lib/handlers/component/Embed';
 export default new Command({
   name: 'rank',
   description: 'ユーザーのレベルを表示します',
-  aliases: ["level"],
+  aliases: ['level'],
   options: [
     {
       name: 'target',
-      description: 'レベルを表示するユーザー',
+      description: '@user',
       type: ApplicationCommandOptionType.User,
     },
   ],

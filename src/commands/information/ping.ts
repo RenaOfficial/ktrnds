@@ -18,7 +18,7 @@ const pingingEmbed = {
 
 export default new Command({
   name: 'ping',
-  description: "Displays the Bot's ping value.",
+  description: 'Botの応答速度を表示します',
   type: ApplicationCommandType.ChatInput,
   ephemeral: false,
   slash: async ({ interaction }) => {

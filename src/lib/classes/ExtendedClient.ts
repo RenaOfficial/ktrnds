@@ -12,7 +12,6 @@ import { Event } from '@/lib/classes/Event';
 import { promisify } from 'util';
 import glob from 'glob';
 import mongoose from 'mongoose';
-import * as process from 'process';
 
 const globPromise = promisify(glob);
 
@@ -28,7 +27,7 @@ export class ExtendedClient extends Client {
     }
   > = new Collection();
 
-  calculateLevelXp(level: number): number {
+  public calculateLevelXp(level: number): number {
     return 100 * level || 1;
   }
 
@@ -56,9 +55,7 @@ export class ExtendedClient extends Client {
     });
   }
 
-  private async importFile(
-    filePath: string
-  ): Promise<CommandType | Event<keyof ClientEvents> | undefined> {
+  public async importFile<T>(filePath: string): Promise<T> {
     return (await import(filePath))?.default;
   }
 
@@ -67,7 +64,7 @@ export class ExtendedClient extends Client {
       `${__dirname}/../../events/**/*{.ts,.js}`
     );
     for (const filePath of eventFiles) {
-      const event = await this.importFile(filePath);
+      const event = await this.importFile<Event<keyof ClientEvents>>(filePath);
       if (event && 'event' in event) {
         this.on(event.event, event.run);
       }
@@ -81,7 +78,7 @@ export class ExtendedClient extends Client {
     );
 
     for (const filePath of commandFiles) {
-      const command = await this.importFile(filePath);
+      const command = await this.importFile<CommandType>(filePath);
       if (!command || !('name' in command)) continue;
 
       this.commands.set(command.name, command);

@@ -8,12 +8,13 @@ import { interactionSnipe, messageSnipe } from '@/lib/handlers/commands/snipe';
 
 export default new Command({
   name: 'snipe',
-  description: 'Get deleted message or edited message.',
+  description:
+    '編集/削除されたメッセージを取得し、表示します。パラメーターに"e"を含むと編集したメッセージを表示します',
   type: ApplicationCommandType.ChatInput,
   options: [
     {
       name: 'snipe_type',
-      description: 'Snipe types',
+      description: 'Snipe Type',
       type: ApplicationCommandOptionType.String,
       choices: [
         { name: 'Delete', value: 'd' },
