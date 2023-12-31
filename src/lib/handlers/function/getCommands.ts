@@ -1,5 +1,5 @@
 import { CommandType } from '@/lib/interfaces/Command';
-import { ApplicationCommandOptionType } from 'discord.js';
+import { ApplicationCommandOptionType, ApplicationCommandType } from 'discord.js';
 import glob from 'glob';
 import { promisify } from 'util';
 import { client } from '@/index';
@@ -29,6 +29,7 @@ export const getCommands = async () => {
     const command = await client.importFile<CommandType>(filePath);
 
     if (!command) continue;
+    if (command.type !== ApplicationCommandType.ChatInput) continue;
 
     const commandOptions = command.options?.map((option) => {
       if (option.type === ApplicationCommandOptionType.Subcommand) {
