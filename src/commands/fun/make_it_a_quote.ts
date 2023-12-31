@@ -45,14 +45,11 @@ export default new Command({
     const filePath = response.url;
     const parts = filePath.split('/');
     const fileName = parts[parts.length - 1];
+    fileName.replace('?', '');
 
     const resizedImage = await sharp(imageBinary).resize(1920, 1080).toBuffer();
 
-    writeFileSync(
-      `${__dirname}/../../images/quote/${fileName}`,
-      resizedImage,
-      'binary'
-    );
+    writeFileSync(`${__dirname}/../../images/quote/${fileName}`, resizedImage);
 
     const file = await readFile(`${__dirname}/../../images/quote/${fileName}`);
 
@@ -71,7 +68,3 @@ export default new Command({
   },
   chat: async () => {},
 });
-
-function readFileSync(imagePath: any) {
-  throw new Error('Function not implemented.');
-}
