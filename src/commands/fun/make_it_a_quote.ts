@@ -30,9 +30,8 @@ export default new Command({
       })
     ).data;
 
-    const msg = await interaction.fetchReply();
-
-    await msg.edit({
+    await interaction.editReply({
+      content: `[生成元のメッセージ](${interaction.targetMessage.url})`,
       embeds: [
         {
           title: '生成完了',
