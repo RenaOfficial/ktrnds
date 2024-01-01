@@ -17,7 +17,7 @@ import { footer } from '@/lib/handlers/component/Embed';
 import moment from 'moment';
 
 export default new Command({
-  name: '予約投稿を設定する',
+  name: '予約投稿を設定',
   type: ApplicationCommandType.Message,
   slash: async ({ client, interaction }) => {
     if (!interaction.isMessageContextMenuCommand()) return;
