@@ -36,10 +36,10 @@ export default new Command({
       const log: string[] = [];
 
       members?.forEach((member) => {
-        roles.forEach((role) => {
+        roles.forEach(async (role) => {
           const guildMember = message.guild?.members.cache.get(member.id);
 
-          guildMember?.roles
+          await guildMember?.roles
             .add(role.id)
             .catch(() => {
               log.push(

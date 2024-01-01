@@ -16,16 +16,33 @@ import mongoose from 'mongoose';
 const globPromise = promisify(glob);
 
 export class ExtendedClient extends Client {
-  public commands: Collection<string, CommandType> = new Collection();
+  public commands: Collection<string, CommandType> = new Collection<
+    string,
+    CommandType
+  >();
   public snipes: Collection<string, Message<boolean> | PartialMessage> =
-    new Collection();
+    new Collection<string, Message<boolean> | PartialMessage>();
   public edit_snipes: Collection<
     string,
     {
       oldMessage: Message<boolean> | PartialMessage;
       newMessage: Message<boolean> | PartialMessage;
     }
-  > = new Collection();
+  > = new Collection<
+    string,
+    {
+      oldMessage: Message<boolean> | PartialMessage;
+      newMessage: Message<boolean> | PartialMessage;
+    }
+  >();
+  public promises: Collection<Date, { message: string; channel: string }> =
+    new Collection<
+      Date,
+      {
+        message: string;
+        channel: string;
+      }
+    >();
 
   public calculateLevelXp(level: number): number {
     return 100 * level || 1;
