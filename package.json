@@ -15,8 +15,8 @@
     "git:pull": "git pull origin main",
     "pm2:restart": "pm2 restart \"ktrnds\"",
     "restart": "run-s git:fetch git:pull sharp:* build pm2:restart",
-    "sharp:prod": "yarn install --os=linux --cpu=x64 sharp",
-    "sharp:img": "yarn install --force @img/sharp-linux-x64",
+    "sharp:prod": "npm install --os=linux --cpu=x64 sharp",
+    "sharp:img": "npm install --force @img/sharp-linux-x64",
     "sharp:install": "npm install sharp --ignore-engines"
   },
   "keywords": [],
