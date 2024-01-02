@@ -1,18 +1,32 @@
-import { APIEmbedFooter, Colors } from 'discord.js';
-import { client } from '@/index';
 import {
-  AE_BATTERY_FULL,
-  AE_BATTERY_GOOD,
-  AE_BATTERY_LOW,
-  E_JOURNEY,
-  E_ONLINE,
-  E_SPACE,
-  E_STATS_BAD,
-  E_STATS_EXCELLENT,
-  E_STATS_GOOD,
-  E_STATUS_ONLINE,
-} from '@/lib/util/emojis';
+  APIEmbed,
+  APIEmbedFooter,
+  ChannelType,
+  Colors,
+  Guild,
+  TextChannel,
+} from 'discord.js';
+import { client } from '@/index';
 import osu from 'node-os-utils';
+import {
+  Boost,
+  Channel,
+  Journey,
+  Lock,
+  Member,
+  Online,
+  Protected,
+  RAM_Bad,
+  RAM_Excellent,
+  RAM_Good,
+  Server,
+  Space,
+  Stage,
+  Stats01,
+  Stats02,
+  Stats03,
+  Voice,
+} from '@/lib/util/emojis';
 
 const footer = (): APIEmbedFooter => {
   return {
@@ -36,56 +50,39 @@ const pingEmbed = async (response: number) => {
 
   // CPUの使用率に応じて絵文字を変更
   const cpuEmoji =
-    cpuInteger < 30
-      ? AE_BATTERY_FULL
-      : cpuInteger <= 60
-        ? E_STATS_GOOD
-        : AE_BATTERY_LOW;
+    cpuInteger < 30 ? RAM_Excellent : cpuInteger <= 60 ? RAM_Good : RAM_Bad;
 
   // RAMの使用率に応じて絵文字を変更
   const memEmoji =
-    memInteger < 50
-      ? AE_BATTERY_FULL
-      : memInteger <= 80
-        ? E_STATS_GOOD
-        : AE_BATTERY_LOW;
+    memInteger < 50 ? RAM_Excellent : memInteger <= 80 ? RAM_Good : RAM_Bad;
 
   // レスポンス速度に応じて絵文字を変更_
   const responseEmoji =
-    response < 401
-      ? E_STATS_EXCELLENT
-      : response <= 600
-        ? E_STATS_GOOD
-        : E_STATS_BAD;
+    response < 401 ? Stats01 : response <= 600 ? Stats02 : Stats03;
 
   // WS速度に応じて絵文字を変更
-  const latencyEmoji =
-    ping < 201
-      ? E_STATS_EXCELLENT
-      : ping <= 400
-        ? E_STATS_GOOD
-        : E_STATS_BAD;
+  const latencyEmoji = ping < 201 ? Stats01 : ping <= 400 ? Stats02 : Stats03;
 
   // フィールドを作成
   const latencyMessage =
-    E_SPACE + latencyEmoji + '**WebSocket:** `' + ping + '`ms';
+    Space + latencyEmoji + '**WebSocket:** `' + ping + '`ms';
   const responseMessage =
-    E_SPACE + responseEmoji + '**Response:** `' + response + '`ms';
+    Space + responseEmoji + '**Response:** `' + response + '`ms';
 
   const cpuMessage = cpuEmoji + ' **CPU:** `' + cpuUsage + '`%';
   const memMessage = memEmoji + ' **RAM:** `' + memUsage + '`%';
 
-  const resourceFieldMessage = E_SPACE + E_JOURNEY + ' **Resources:**';
+  const resourceFieldMessage = Space + Journey + ' **Resources:**';
 
   const resourceField =
-    E_SPACE + E_SPACE + cpuMessage + '\n' + E_SPACE + E_SPACE + memMessage;
+    Space + Space + cpuMessage + '\n' + Space + Space + memMessage;
 
-  const title = E_ONLINE + ' **Shard[0]:**';
+  const title = Stage + ' **Shard[0]:**';
 
   return {
     embeds: [
       {
-        title: E_STATUS_ONLINE + ' Bot Status:',
+        title: Online + ' Bot Status:',
         fields: [
           {
             name: title,
@@ -106,6 +103,109 @@ const pingEmbed = async (response: number) => {
     allowedMentions: {
       parse: [],
     },
+  };
+};
+
+const serverInfo = async (guild: Guild): Promise<APIEmbed> => {
+  const verification_levels = {
+    0: '無し',
+    1: '低',
+    2: '中',
+    3: '高',
+    4: '最高',
+  };
+
+  const createBoostBar = () => {
+    const boostCount = guild.premiumSubscriptionCount ?? 0;
+    const boostLevel = guild.premiumTier;
+
+    const getProgressBar = (fillCount: number, maxCount: number) => {
+      const pinkEmoji = '🟪';
+      const greyEmoji = '⬛';
+
+      const pinkPart = pinkEmoji.repeat(fillCount);
+      const greyPart = greyEmoji.repeat(maxCount - fillCount);
+
+      return pinkPart + greyPart;
+    };
+
+    switch (boostLevel) {
+      case 0:
+        return (
+          `レベル無し | ${boostCount === 0 ? '未' : boostCount}ブースト\n` +
+          getProgressBar(boostCount, 2) +
+          `\n次のレベルまで: ${boostCount}/2`
+        );
+      case 1:
+        return (
+          `レベル ${boostLevel} | ${boostCount}ブースト\n` +
+          getProgressBar(boostCount, 7) +
+          `\n次のレベルまで: ${boostCount}/7`
+        );
+      case 2:
+        return (
+          `レベル ${boostLevel} | ${boostCount}ブースト\n` +
+          getProgressBar(boostCount, 14) +
+          `\n次のレベルまで: ${boostCount}/14`
+        );
+      case 3:
+        return (
+          `レベル ${boostLevel} | ${boostCount}ブースト\n` +
+          '🟪'.repeat(boostCount) +
+          '\n'
+        );
+    }
+  };
+
+  return {
+    author: {
+      name: guild.name,
+      icon_url: guild.iconURL()?.toString(),
+    },
+    thumbnail: {
+      url: guild.bannerURL()?.toString() || '',
+    },
+    fields: [
+      {
+        name: Server + ' サーバー作成日',
+        value: '<t:' + guild.createdTimestamp.toString() + '>',
+      },
+      {
+        name: Member + ' サーバー所有者',
+        value: '<@!' + (await guild.fetchOwner()).id + '>',
+        inline: true,
+      },
+      {
+        name: Member + ' メンバー数',
+        value: guild.memberCount + '人',
+      },
+      {
+        name: Lock + ' BANされたユーザー数',
+        value: (await guild.bans.fetch()).size.toString() + 'メンバー',
+        inline: true,
+      },
+      {
+        name: Protected + ' 認証レベル',
+        value: verification_levels[guild.mfaLevel],
+      },
+      {
+        name: Boost + ' サーバーブースト進行度',
+        value: createBoostBar() ?? '生成中にエラーが発生しました',
+      },
+      {
+        name: 'チャンネル数(' + guild.channels.cache.size + ')',
+        value:
+          Channel +
+          ' **テキストチャンネル:** ' +
+          guild.channels.cache.filter((channel) => channel.isTextBased).size +
+          '\n' +
+          Voice +
+          ' **ボイスチャンネル:** ' +
+          guild.channels.cache.filter((channel) => channel.isVoiceBased()).size,
+      },
+    ],
+    color: Colors.Gold,
+    footer: footer(),
   };
 };
 
