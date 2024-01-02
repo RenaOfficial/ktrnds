@@ -106,7 +106,7 @@ const pingEmbed = async (response: number) => {
   };
 };
 
-const serverInfo = async (guild: Guild): Promise<APIEmbed> => {
+export const serverInfo = async (guild: Guild): Promise<APIEmbed> => {
   const verification_levels = {
     0: '無し',
     1: '低',
