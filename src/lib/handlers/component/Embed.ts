@@ -162,7 +162,7 @@ export const serverInfo = async (guild: Guild): Promise<APIEmbed> => {
       name: guild.name,
       icon_url: guild.iconURL()?.toString(),
     },
-    thumbnail: {
+    image: {
       url: guild.bannerURL()?.toString() || '',
     },
     fields: [
