@@ -6,7 +6,7 @@ import { footer } from '@/lib/handlers/component/Embed';
 export default new Command({
   name: 'Make it a Quote',
   type: ApplicationCommandType.Message,
-  slash: async ({ client, interaction }) => {
+  slash: async ({ interaction }) => {
     if (!interaction.isMessageContextMenuCommand()) return;
 
     if (!interaction.targetMessage) {

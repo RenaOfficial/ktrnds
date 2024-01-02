@@ -64,7 +64,7 @@ export default new Command({
       files: [attachment],
     });
   },
-  chat: async ({ client, message, args }) => {
+  chat: async ({ client, message }) => {
     if (!message.guild) return;
 
     const targetUserId = message.mentions.members?.first() || message.author.id;

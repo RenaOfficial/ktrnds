@@ -16,7 +16,7 @@ export default new Command({
       ],
     });
   },
-  chat: async ({ client, message, args }) => {
+  chat: async ({ message, args }) => {
     if (args[0] === 'give') {
       const roles = message.mentions.roles;
       const members = message.mentions.members;
