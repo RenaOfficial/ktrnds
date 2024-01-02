@@ -5,8 +5,6 @@ import {
   ApplicationCommandType,
   Colors,
 } from 'discord.js';
-import { interactionSnipe, messageSnipe } from '@/lib/handlers/commands/snipe';
-import { client } from '@/index';
 import { footer } from '@/lib/handlers/component/Embed';
 
 export default new Command({
