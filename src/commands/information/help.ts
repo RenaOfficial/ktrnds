@@ -138,7 +138,7 @@ export default new Command({
         const commandName =
           command.name.charAt(0).toUpperCase() + command.name.slice(1);
         const aliases = command.aliases
-          .map((alias) => '`' + alias + '`')
+          .map((alias: string) => '`' + alias + '`')
           .join(', ');
         const commandDescription = command.description;
         const commandUsage = command.usage;
