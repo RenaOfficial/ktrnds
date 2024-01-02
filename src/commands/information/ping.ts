@@ -1,20 +1,9 @@
-import { ApplicationCommandType, Colors } from 'discord.js';
+import {
+  ApplicationCommandType,
+  Colors,
+} from 'discord.js';
 import { Command } from '@/lib/classes/Command';
-import { footer } from '@/lib/handlers/component/Embed';
-import { sendReply } from '@/lib/handlers/commands/ping';
-
-const pingingEmbed = {
-  embeds: [
-    {
-      title: '🏓 Pinging...',
-      color: Colors.Red,
-      footer: footer(),
-    },
-  ],
-  allowedMentions: {
-    parse: [],
-  },
-};
+import { footer, pingEmbed } from '@/lib/handlers/component/Embed';
 
 export default new Command({
   name: 'ping',
@@ -23,17 +12,18 @@ export default new Command({
   ephemeral: false,
   slash: async ({ interaction }) => {
     if (!interaction.isChatInputCommand()) return;
-    await interaction.followUp(pingingEmbed);
 
-    const responseData = await sendReply({ data: interaction });
+    // 応答速度を計算
+    const response =
+      new Date().getTime() - (await interaction.fetchReply()).createdTimestamp;
 
-    await interaction.editReply(responseData);
+    await interaction.followUp(await pingEmbed(response))
   },
   chat: async ({ message }) => {
-    const msg = await message.reply(pingingEmbed);
+    // 応答速度を計算
+    const response =
+      new Date().getTime() - message.createdTimestamp;
 
-    const responseData = await sendReply({ data: message });
-
-    await msg.edit(responseData);
+    await message.reply(await pingEmbed(response))
   },
 });
