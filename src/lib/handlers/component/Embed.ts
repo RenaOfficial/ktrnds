@@ -168,7 +168,7 @@ export const serverInfo = async (guild: Guild): Promise<APIEmbed> => {
     fields: [
       {
         name: Server + ' サーバー作成日',
-        value: '<t:' + guild.createdAt + '>',
+        value: '<t:' + guild.createdAt.getTime() + '>',
       },
       {
         name: Member + ' サーバー所有者',
