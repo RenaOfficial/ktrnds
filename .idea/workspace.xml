@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de3c5624-0b45-4501-964f-515801f39154" name="変更" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commands/fun/make_it_a_quote.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/fun/make_it_a_quote.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,13 +63,15 @@
     "javascript.nodejs.core.library.typings.version": "20.10.5",
     "last_opened_file_path": "/Volumes/Macintosh HD - Data/Node.js/ktrnds/src/server",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "/Volumes/Macintosh HD - Data/Node.js/ktrnds/node_modules/prettier",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/rey/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "ts.external.directory.path": "/Volumes/Macintosh HD - Data/Node.js/ktrnds/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -99,7 +105,7 @@
       <workItem from="1703917645282" duration="3051000" />
       <workItem from="1703935197069" duration="21586000" />
       <workItem from="1704024508016" duration="11031000" />
-      <workItem from="1704183763203" duration="1527000" />
+      <workItem from="1704183763203" duration="2868000" />
     </task>
     <servers />
   </component>

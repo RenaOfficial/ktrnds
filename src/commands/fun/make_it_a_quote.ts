@@ -2,9 +2,6 @@ import { Command } from '@/lib/classes/Command';
 import axios from 'axios';
 import { ApplicationCommandType, Colors } from 'discord.js';
 import { footer } from '@/lib/handlers/component/Embed';
-import { unlinkSync, writeFileSync } from 'fs';
-import { readFile } from 'fs/promises';
-import sharp from 'sharp';
 
 export default new Command({
   name: 'Make it a Quote',
@@ -36,34 +33,22 @@ export default new Command({
       })
     ).data;
 
-    const imageBinary: ArrayBuffer = (
-      await axios.get(response.url, {
-        responseType: 'arraybuffer',
-      })
-    ).data;
+    const imageBuffer = await axios.get(response.url, {
+      responseType: 'arraybuffer',
+    });
 
-    const filePath = response.url;
-    const parts = filePath.split('/');
-    const fileName = parts[parts.length - 1];
-
-    const resizedImage = await sharp(imageBinary).resize(1920, 1008).toBuffer();
-
-    writeFileSync(`${__dirname}/../../images/quote/${fileName}`, resizedImage);
-
-    const file = await readFile(`${__dirname}/../../images/quote/${fileName}`);
+    const imageBinary = Buffer.from(imageBuffer.data, 'binary');
 
     await interaction.followUp({
       content: `[生成元のメッセージ](${interaction.targetMessage.url})`,
       embeds: [],
       files: [
         {
-          attachment: file,
+          attachment: imageBinary,
           name: 'quote.jpg',
         },
       ],
     });
-
-    unlinkSync(`${__dirname}/../../images/quote/${fileName}`);
   },
   chat: async () => {},
 });

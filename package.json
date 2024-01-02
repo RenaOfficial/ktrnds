@@ -24,7 +24,6 @@
   "license": "UNLICENSED",
   "description": "",
   "dependencies": {
-    "@img/sharp-darwin-x64": "^0.33.1",
     "@types/node-os-utils": "^1.3.4",
     "axios": "^1.6.3",
     "canvacord": "^5.4.10",
@@ -38,7 +37,6 @@
     "moment": "^2.30.1",
     "mongoose": "^8.0.3",
     "node-os-utils": "^1.3.7",
-    "sharp": "^0.33.1",
     "socket.io": "^4.7.2",
     "ws": "^8.16.0"
   },
