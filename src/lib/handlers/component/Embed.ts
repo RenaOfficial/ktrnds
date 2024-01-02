@@ -169,15 +169,16 @@ export const serverInfo = async (guild: Guild): Promise<APIEmbed> => {
       {
         name: Server + ' サーバー作成日',
         value: '<t:' + guild.createdAt.getTime() + '>',
+        inline: true
       },
       {
         name: Member + ' サーバー所有者',
         value: '<@!' + (await guild.fetchOwner()).id + '>',
-        inline: true,
       },
       {
         name: Member + ' メンバー数',
         value: guild.memberCount + '人',
+        inline: true
       },
       {
         name: Lock + ' BANされたユーザー数',
@@ -187,6 +188,7 @@ export const serverInfo = async (guild: Guild): Promise<APIEmbed> => {
       {
         name: Protected + ' 認証レベル',
         value: verification_levels[guild.mfaLevel],
+        inline: true
       },
       {
         name: Boost + ' サーバーブースト進行度',
