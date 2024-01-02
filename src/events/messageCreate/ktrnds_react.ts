@@ -12,5 +12,8 @@ export default new Event('messageCreate', async (message) => {
     }
   }
 
-  if (message.channel.id === '1191332949665255494') await message.react('☘️');
+  if (message.channel.id === '1191332949665255494') {
+    if (message.author.bot) return;
+    await message.react('☘️');
+  }
 });
