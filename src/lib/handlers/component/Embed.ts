@@ -1,13 +1,16 @@
 import { APIEmbedFooter, Colors } from 'discord.js';
 import { client } from '@/index';
 import {
-  AE_BATTERY_FULL, AE_BATTERY_GOOD, AE_BATTERY_LOW,
+  AE_BATTERY_FULL,
+  AE_BATTERY_GOOD,
+  AE_BATTERY_LOW,
   E_JOURNEY,
   E_ONLINE,
   E_SPACE,
   E_STATS_BAD,
   E_STATS_EXCELLENT,
-  E_STATS_GOOD, E_STATUS_ONLINE,
+  E_STATS_GOOD,
+  E_STATUS_ONLINE,
 } from '@/lib/util/emojis';
 import osu from 'node-os-utils';
 
@@ -33,33 +36,33 @@ const pingEmbed = async (response: number) => {
 
   // CPUの使用率に応じて絵文字を変更
   const cpuEmoji =
-    cpuInteger >= 80
-      ? AE_BATTERY_LOW
-      : cpuInteger < 80 && cpuInteger >= 50
-        ? AE_BATTERY_GOOD
-        : AE_BATTERY_FULL;
+    cpuInteger < 30
+      ? AE_BATTERY_FULL
+      : cpuInteger <= 60
+        ? E_STATS_GOOD
+        : AE_BATTERY_LOW;
 
   // RAMの使用率に応じて絵文字を変更
   const memEmoji =
-    memInteger >= 80
-      ? AE_BATTERY_LOW
-      : memInteger < 80 && memInteger >= 50
-        ? AE_BATTERY_GOOD
-        : AE_BATTERY_FULL;
+    memInteger < 50
+      ? AE_BATTERY_FULL
+      : memInteger <= 80
+        ? E_STATS_GOOD
+        : AE_BATTERY_LOW;
 
-  // レスポンス速度に応じて絵文字を変更
+  // レスポンス速度に応じて絵文字を変更_
   const responseEmoji =
-    response >= 400
+    response < 401
       ? E_STATS_EXCELLENT
-      : response < 400 && response >= 600
+      : response <= 600
         ? E_STATS_GOOD
         : E_STATS_BAD;
 
   // WS速度に応じて絵文字を変更
   const latencyEmoji =
-    ping >= 200
+    ping < 201
       ? E_STATS_EXCELLENT
-      : ping < 200 && ping >= 400
+      : ping <= 400
         ? E_STATS_GOOD
         : E_STATS_BAD;
 
@@ -103,7 +106,7 @@ const pingEmbed = async (response: number) => {
     allowedMentions: {
       parse: [],
     },
-  }
-}
+  };
+};
 
 export { footer, pingEmbed };
