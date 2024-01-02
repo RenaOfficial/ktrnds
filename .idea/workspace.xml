@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de3c5624-0b45-4501-964f-515801f39154" name="変更" comment="">
-      <change afterPath="$PROJECT_DIR$/src/commands/utility/promise.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/commands/utility/voice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/events/ready/promise.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commands/utility/role.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/utility/role.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commands/utility/promise.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/events/ready/promise.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/classes/ExtendedClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/classes/ExtendedClient.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
@@ -81,11 +79,11 @@
       <recent name="$PROJECT_DIR$/src/server" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/commands/context" />
       <recent name="$PROJECT_DIR$/src/events/messageCreate" />
       <recent name="$PROJECT_DIR$/src/events/ready" />
       <recent name="$PROJECT_DIR$/src/events/messageUpdate" />
       <recent name="$PROJECT_DIR$/src/events/messageDelete" />
-      <recent name="$PROJECT_DIR$/src/events/interactionCreate" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="アプリケーションレベル" UseSingleDictionary="true" transferred="true" />
@@ -105,7 +103,8 @@
       <workItem from="1703842404385" duration="8753000" />
       <workItem from="1703917645282" duration="3051000" />
       <workItem from="1703935197069" duration="21586000" />
-      <workItem from="1704024508016" duration="8480000" />
+      <workItem from="1704024508016" duration="11031000" />
+      <workItem from="1704183763203" duration="1196000" />
     </task>
     <servers />
   </component>

@@ -1,8 +1,10 @@
 import {
+  APIInteractionGuildMember,
   ApplicationCommandDataResolvable,
   Client,
   ClientEvents,
   Collection,
+  GuildMember,
   IntentsBitField,
   Message,
   PartialMessage,
@@ -46,6 +48,28 @@ export class ExtendedClient extends Client {
 
   public calculateLevelXp(level: number): number {
     return 100 * level || 1;
+  }
+
+  public randomName(): string {
+    return Math.random().toString(36).slice(2);
+  }
+
+  public hasAnyOneRoles(
+    member: GuildMember | APIInteractionGuildMember,
+    roleIds: ReadonlySet<string>
+  ): boolean {
+    const memberRoleIds: ReadonlySet<string> =
+      member instanceof GuildMember
+        ? new Set(member.roles.cache.keys())
+        : new Set(member.roles);
+
+    for (const id of roleIds) {
+      if (memberRoleIds.has(id)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   public constructor() {
