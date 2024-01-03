@@ -27,6 +27,7 @@ import {
   Stats03,
   Voice,
 } from '@/lib/util/emojis';
+import { createBar } from '@/lib/util/createBar';
 
 const footer = (): APIEmbedFooter => {
   return {
@@ -119,40 +120,30 @@ export const serverInfo = async (guild: Guild): Promise<APIEmbed> => {
     const boostCount = guild.premiumSubscriptionCount ?? 0;
     const boostLevel = guild.premiumTier;
 
-    const getProgressBar = (fillCount: number, maxCount: number) => {
-      const pinkEmoji = '🟪';
-      const greyEmoji = '⬛';
-
-      const pinkPart = pinkEmoji.repeat(fillCount);
-      const greyPart = greyEmoji.repeat(maxCount - fillCount);
-
-      return pinkPart + greyPart;
-    };
-
     switch (boostLevel) {
       case 0:
         return (
           `レベル無し | ${boostCount === 0 ? '未' : boostCount}ブースト\n` +
-          getProgressBar(boostCount, 2) +
+          createBar(boostCount, 2) +
           `\n次のレベルまで: ${boostCount}/2`
         );
       case 1:
         return (
           `レベル ${boostLevel} | ${boostCount}ブースト\n` +
-          getProgressBar(boostCount, 7) +
+          createBar(boostCount, 7) +
           `\n次のレベルまで: ${boostCount}/7`
         );
       case 2:
         return (
           `レベル ${boostLevel} | ${boostCount}ブースト\n` +
-          getProgressBar(boostCount, 14) +
+          createBar(boostCount, 14) +
           `\n次のレベルまで: ${boostCount}/14`
         );
       case 3:
         return (
           `レベル ${boostLevel} | ${boostCount}ブースト\n` +
-          '🟪'.repeat(boostCount) +
-          '\n'
+          createBar(boostCount, 14) +
+          '\nブーストレベル最大🎉'
         );
     }
   };
@@ -168,8 +159,8 @@ export const serverInfo = async (guild: Guild): Promise<APIEmbed> => {
     fields: [
       {
         name: Server + ' サーバー作成日',
-        value: '<t:' + (guild.createdAt.getTime() / 1000) + '>',
-        inline: true
+        value: '<t:' + guild.createdAt.getTime() / 1000 + '>',
+        inline: true,
       },
       {
         name: Member + ' サーバー所有者',
@@ -178,7 +169,7 @@ export const serverInfo = async (guild: Guild): Promise<APIEmbed> => {
       {
         name: Member + ' メンバー数',
         value: guild.memberCount + '人',
-        inline: true
+        inline: true,
       },
       {
         name: Lock + ' BANされたユーザー数',
@@ -188,11 +179,11 @@ export const serverInfo = async (guild: Guild): Promise<APIEmbed> => {
       {
         name: Protected + ' 認証レベル',
         value: verification_levels[guild.mfaLevel],
-        inline: true
+        inline: true,
       },
       {
         name: Boost + ' サーバーブースト進行度',
-        value: createBoostBar() ?? '生成中にエラーが発生しました',
+        value: createBoostBar() ?? "生成中にエラーが発生しました",
       },
       {
         name: 'チャンネル数(' + guild.channels.cache.size + ')',

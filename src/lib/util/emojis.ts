@@ -23,3 +23,10 @@ export const StudentHub = '<:25D_StudentHub:1191805241067311124>';
 export const Space = '<:25D_Space:1191751898064224277>';
 export const Lock = '<:25D_Lock:1191807716117712998>';
 export const Voice = '<:25D_Voice:1191816479566467182>';
+
+export const Empty_LeftG = '<:25D_Empty_LeftG:1192011764682985472>';
+export const Empty_InnerG = '<:25D_Empty_InnerG:1192011760438362195>';
+export const Empty_RightG = '<:25D_Empty_RightG:1192011766171971675>';
+export const Full_LeftG = '<:25D_Full_LeftG:1192011770685038682>';
+export const Full_InnerG = '<:25D_Full_InnerG:1192011769024094248>';
+export const Full_RightG = '<:25D_Full_RightG:1192011773855944836>';
