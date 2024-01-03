@@ -26,13 +26,13 @@ export const log = (message: string | Error, LogType: LogType) => {
   const now = moment().format('MM/DD hh:mm:ss');
   const type =
     LogType === 'INFO'
-      ? '\x1b[46mINFO\x1b[0m'
+      ? '\x1b[46mINFO\x1b[0m   |'
       : LogType === 'DEBUG'
-        ? '\x1b[45mDEBUG\x1b[0m'
+        ? '\x1b[45mDEBUG\x1b[0m  |'
         : LogType === 'ERROR'
-          ? '\x1b[41mERROR\x1b[0m'
+          ? '\x1b[41mERROR\x1b[0m  |'
           : LogType === 'CLIENT'
-            ? '\x1b[43mCLIENT\x1b[0m'
+            ? '\x1b[43mCLIENT\x1b[0m |'
             : '';
   console.log(
     `\x1b[33m[\x1b[0m${now}\x1b[33m]\x1b[0m ${type} ${
