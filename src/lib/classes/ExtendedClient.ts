@@ -19,7 +19,7 @@ import moment from 'moment';
 
 const globPromise = promisify(glob);
 
-type LogType = 'INFO' | 'DEBUG' | 'ERROR';
+type LogType = 'INFO' | 'DEBUG' | 'ERROR' | 'CLIENT';
 
 export const log = (message: string | Error, LogType: LogType) => {
   message = message.toString();
@@ -30,7 +30,9 @@ export const log = (message: string | Error, LogType: LogType) => {
       ? '\x1b[45mDEBUG\x1b[0m'
       : 'ERROR'
         ? '\x1b[41mERROR\x1b[0m'
-        : '';
+        : 'CLIENT'
+          ? '\x1b[43mCLIENT\x1b[0m'
+          : '';
   console.log(
     `\x1b[33m[\x1b[0m${now}\x1b[33m]\x1b[0m ${type} \x1b[32m${message.toString()}\x1b[0m`
   );
@@ -79,7 +81,7 @@ export class ExtendedClient extends Client {
       const endTime = process.hrtime(startTime);
       const processingTimeMs = Math.floor(endTime[0] * 1000 + endTime[1] / 1e6);
       log(
-        'Modules loaded successfully on \x1b[35m${processingTimeMs}ms\x1b[0m',
+        `Modules loaded successfully on \x1b[35m${processingTimeMs}ms\x1b[0m`,
         'INFO'
       );
     });
