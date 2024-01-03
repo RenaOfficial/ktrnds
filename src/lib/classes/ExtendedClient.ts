@@ -14,6 +14,7 @@ import { Event } from '@/lib/classes/Event';
 import { promisify } from 'util';
 import glob from 'glob';
 import mongoose from 'mongoose';
+import * as process from 'process';
 
 const globPromise = promisify(glob);
 
@@ -37,39 +38,9 @@ export class ExtendedClient extends Client {
       newMessage: Message<boolean> | PartialMessage;
     }
   >();
-  public promises: Collection<Date, { message: string; channel: string }> =
-    new Collection<
-      Date,
-      {
-        message: string;
-        channel: string;
-      }
-    >();
 
   public calculateLevelXp(level: number): number {
     return 100 * level || 1;
-  }
-
-  public randomName(): string {
-    return Math.random().toString(36).slice(2);
-  }
-
-  public hasAnyOneRoles(
-    member: GuildMember | APIInteractionGuildMember,
-    roleIds: ReadonlySet<string>
-  ): boolean {
-    const memberRoleIds: ReadonlySet<string> =
-      member instanceof GuildMember
-        ? new Set(member.roles.cache.keys())
-        : new Set(member.roles);
-
-    for (const id of roleIds) {
-      if (memberRoleIds.has(id)) {
-        return true;
-      }
-    }
-
-    return false;
   }
 
   public constructor() {
@@ -85,14 +56,27 @@ export class ExtendedClient extends Client {
   }
 
   public start(): void {
+    const startTime = process.hrtime();
     this.registerModules().then(() => {
-      console.log(`\x1b[36mModules loaded successfully\x1b[0m`);
+      const endTime = process.hrtime(startTime);
+      const processingTimeMs = Math.floor(endTime[0] * 1000 + endTime[1] / 1e6);
+      console.log(
+        `\x1b[36mModules loaded successfully on \x1b[35m${processingTimeMs}ms\x1b[0m`
+      );
     });
     this.login(process.env.CLIENT_TOKEN).then(() => {
-      console.log(`\x1b[32mLogged in successfully\x1b[0m`);
+      const endTime = process.hrtime(startTime);
+      const processingTimeMs = Math.floor(endTime[0] * 1000 + endTime[1] / 1e6);
+      console.log(
+        `\x1b[32mLogged in successfully on \x1b[35m${processingTimeMs}ms\x1b[0m`
+      );
     });
     mongoose.connect(process.env.DATABASE_CONNECTION_URI).then(() => {
-      console.log(`\x1b[36mSuccessfully connected to database\x1b[0m`);
+      const endTime = process.hrtime(startTime);
+      const processingTimeMs = Math.floor(endTime[0] * 1000 + endTime[1] / 1e6);
+      console.log(
+        `\x1b[36mSuccessfully connected to database on \x1b[35m${processingTimeMs}ms\x1b[0m`
+      );
     });
   }
 
@@ -127,11 +111,16 @@ export class ExtendedClient extends Client {
     }
 
     this.on('ready', () => {
+      const startTime = process.hrtime();
       this.application?.commands
         .set(slashCommands)
         .then(() => {
+          const endTime = process.hrtime(startTime);
+          const processingTimeMs = Math.floor(
+            endTime[0] * 1000 + endTime[1] / 1e6
+          );
           console.log(
-            `\x1b[32mRegistered ${slashCommands.length} slash commands on ${this.guilds.cache.size} servers\x1b[0m`
+            `\x1b[32mRegistered ${slashCommands.length} slash commands on ${this.guilds.cache.size} servers on \x1b[35m${processingTimeMs}ms\x1b[0m`
           );
         })
         .catch((e: Error) => {

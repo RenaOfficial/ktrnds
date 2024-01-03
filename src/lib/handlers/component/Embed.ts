@@ -183,7 +183,7 @@ export const serverInfo = async (guild: Guild): Promise<APIEmbed> => {
       },
       {
         name: Boost + ' サーバーブースト進行度',
-        value: createBoostBar() ?? "生成中にエラーが発生しました",
+        value: createBoostBar() ?? '生成中にエラーが発生しました',
       },
       {
         name: 'チャンネル数(' + guild.channels.cache.size + ')',
