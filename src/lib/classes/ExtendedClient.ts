@@ -24,17 +24,20 @@ type LogType = 'INFO' | 'DEBUG' | 'ERROR' | 'CLIENT';
 export const log = (message: string | Error, LogType: LogType) => {
   message = message.toString();
   const now = moment().format('MM/DD hh:mm:ss');
-  const type = 'INFO'
-    ? '\x1b[46mINFO\x1b[0m'
-    : 'DEBUG'
-      ? '\x1b[45mDEBUG\x1b[0m'
-      : 'ERROR'
-        ? '\x1b[41mERROR\x1b[0m'
-        : 'CLIENT'
-          ? '\x1b[43mCLIENT\x1b[0m'
-          : '';
+  const type =
+    LogType === 'INFO'
+      ? '\x1b[46mINFO\x1b[0m'
+      : LogType === 'DEBUG'
+        ? '\x1b[45mDEBUG\x1b[0m'
+        : LogType === 'ERROR'
+          ? '\x1b[41mERROR\x1b[0m'
+          : LogType === 'CLIENT'
+            ? '\x1b[43mCLIENT\x1b[0m'
+            : '';
   console.log(
-    `\x1b[33m[\x1b[0m${now}\x1b[33m]\x1b[0m ${type} \x1b[32m${message.toString()}\x1b[0m`
+    `\x1b[33m[\x1b[0m${now}\x1b[33m]\x1b[0m ${type} ${
+      LogType === 'ERROR' ? '\x1b[31m' : '\x1b[32m'
+    }${message.toString()}\x1b[0m`
   );
 };
 
@@ -89,7 +92,7 @@ export class ExtendedClient extends Client {
       const endTime = process.hrtime(startTime);
       const processingTimeMs = Math.floor(endTime[0] * 1000 + endTime[1] / 1e6);
       log(
-        `\x1b[32mLogged in successfully on \x1b[35m${processingTimeMs}ms\x1b[0m`,
+        `Logged in successfully on \x1b[35m${processingTimeMs}ms\x1b[0m`,
         'INFO'
       );
     });
@@ -97,7 +100,7 @@ export class ExtendedClient extends Client {
       const endTime = process.hrtime(startTime);
       const processingTimeMs = Math.floor(endTime[0] * 1000 + endTime[1] / 1e6);
       log(
-        `\x1b[36mSuccessfully connected to database on \x1b[35m${processingTimeMs}ms\x1b[0m`,
+        `Successfully connected to database on \x1b[35m${processingTimeMs}ms\x1b[0m`,
         'INFO'
       );
     });
@@ -143,12 +146,12 @@ export class ExtendedClient extends Client {
             endTime[0] * 1000 + endTime[1] / 1e6
           );
           log(
-            `\x1b[32mRegistered ${slashCommands.length} slash commands on ${this.guilds.cache.size} servers on \x1b[35m${processingTimeMs}ms\x1b[0m`,
+            `Registered ${slashCommands.length} slash commands on ${this.guilds.cache.size} servers on \x1b[35m${processingTimeMs}ms\x1b[0m`,
             'INFO'
           );
         })
         .catch((e: Error) => {
-          log(`\x1b[31mFailed to register slash commands\x1b[0m`, 'ERROR');
+          log(`Failed to register slash commands\x1b[0m`, 'ERROR');
           console.log(`\x1b[31m=> ${e}\x1b[0m`);
         });
     });
