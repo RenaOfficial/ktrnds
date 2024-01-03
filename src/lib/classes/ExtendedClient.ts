@@ -15,8 +15,26 @@ import { promisify } from 'util';
 import glob from 'glob';
 import mongoose from 'mongoose';
 import * as process from 'process';
+import moment from 'moment';
 
 const globPromise = promisify(glob);
+
+type LogType = 'INFO' | 'DEBUG' | 'ERROR';
+
+export const log = (message: string | Error, LogType: LogType) => {
+  message = message.toString();
+  const now = moment().format('MM/DD hh:mm:ss');
+  const type = 'INFO'
+    ? '\x1b[46mINFO\x1b[0m'
+    : 'DEBUG'
+      ? '\x1b[45mDEBUG\x1b[0m'
+      : 'ERROR'
+        ? '\x1b[41mERROR\x1b[0m'
+        : '';
+  console.log(
+    `\x1b[33m[\x1b[0m${now}\x1b[33m]\x1b[0m ${type} \x1b[32m${message.toString()}\x1b[0m`
+  );
+};
 
 export class ExtendedClient extends Client {
   public commands: Collection<string, CommandType> = new Collection<
@@ -60,22 +78,25 @@ export class ExtendedClient extends Client {
     this.registerModules().then(() => {
       const endTime = process.hrtime(startTime);
       const processingTimeMs = Math.floor(endTime[0] * 1000 + endTime[1] / 1e6);
-      console.log(
-        `\x1b[36mModules loaded successfully on \x1b[35m${processingTimeMs}ms\x1b[0m`
+      log(
+        'Modules loaded successfully on \x1b[35m${processingTimeMs}ms\x1b[0m',
+        'INFO'
       );
     });
     this.login(process.env.CLIENT_TOKEN).then(() => {
       const endTime = process.hrtime(startTime);
       const processingTimeMs = Math.floor(endTime[0] * 1000 + endTime[1] / 1e6);
-      console.log(
-        `\x1b[32mLogged in successfully on \x1b[35m${processingTimeMs}ms\x1b[0m`
+      log(
+        `\x1b[32mLogged in successfully on \x1b[35m${processingTimeMs}ms\x1b[0m`,
+        'INFO'
       );
     });
     mongoose.connect(process.env.DATABASE_CONNECTION_URI).then(() => {
       const endTime = process.hrtime(startTime);
       const processingTimeMs = Math.floor(endTime[0] * 1000 + endTime[1] / 1e6);
-      console.log(
-        `\x1b[36mSuccessfully connected to database on \x1b[35m${processingTimeMs}ms\x1b[0m`
+      log(
+        `\x1b[36mSuccessfully connected to database on \x1b[35m${processingTimeMs}ms\x1b[0m`,
+        'INFO'
       );
     });
   }
@@ -119,12 +140,13 @@ export class ExtendedClient extends Client {
           const processingTimeMs = Math.floor(
             endTime[0] * 1000 + endTime[1] / 1e6
           );
-          console.log(
-            `\x1b[32mRegistered ${slashCommands.length} slash commands on ${this.guilds.cache.size} servers on \x1b[35m${processingTimeMs}ms\x1b[0m`
+          log(
+            `\x1b[32mRegistered ${slashCommands.length} slash commands on ${this.guilds.cache.size} servers on \x1b[35m${processingTimeMs}ms\x1b[0m`,
+            'INFO'
           );
         })
         .catch((e: Error) => {
-          console.log(`\x1b[31mFailed to register slash commands\x1b[0m`);
+          log(`\x1b[31mFailed to register slash commands\x1b[0m`, 'ERROR');
           console.log(`\x1b[31m=> ${e}\x1b[0m`);
         });
     });
