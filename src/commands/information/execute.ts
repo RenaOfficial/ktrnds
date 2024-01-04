@@ -15,59 +15,59 @@ export default new Command({
       required: true,
     },
   ],
-  slash: async ({ client, interaction }) => {
-    if (!interaction.isChatInputCommand()) return;
+  execute: {
+    interaction: async ({ client, interaction }) => {
+      const command = interaction.options.getString('command') || '';
 
-    const command = interaction.options.getString('command') || '';
+      exec(command, (err, res) => {
+        if (err) return console.log(err);
 
-    exec(command, (err, res) => {
-      if (err) return console.log(err);
-
-      interaction.followUp({
-        embeds: [
-          {
-            title: 'Bash scriptを実行しました',
-            description:
-              '実行したコマンド\n```\n$ ' +
-              command +
-              '\n```\n\n結果\n' +
-              '```\n' +
-              res.slice(0, 2000) +
-              '\n```',
-            color: Colors.Aqua,
-            footer: footer(),
-          },
-        ],
+        interaction.followUp({
+          embeds: [
+            {
+              title: 'Bash scriptを実行しました',
+              description:
+                '実行したコマンド\n```\n$ ' +
+                command +
+                '\n```\n\n結果\n' +
+                '```\n' +
+                res.slice(0, 2000) +
+                '\n```',
+              color: Colors.Aqua,
+              footer: footer(),
+            },
+          ],
+        });
       });
-    });
-  },
-  chat: async ({ client, message, args }) => {
-    if (!args[0]) return;
+    },
+    message: async ({ client, message, args }) => {
+      if (!args[0]) return;
 
-    const command = args.join(' ');
+      const command = args.join(' ');
 
-    exec(command, (err, res) => {
-      if (err) return console.log(err);
+      exec(command, (err, res) => {
+        if (err) return console.log(err);
 
-      message.reply({
-        embeds: [
-          {
-            title: 'Bash scriptを実行しました',
-            description:
-              '実行したコマンド\n```\n$ ' +
-              command +
-              '\n```\n\n結果\n' +
-              '```\n' +
-              res.slice(0, 2000) +
-              '\n```',
-            color: Colors.Aqua,
-            footer: footer(),
+        message.reply({
+          embeds: [
+            {
+              title: 'Bash scriptを実行しました',
+              description:
+                '実行したコマンド\n```\n$ ' +
+                command +
+                '\n```\n\n結果\n' +
+                '```\n' +
+                res.slice(0, 2000) +
+                '\n```',
+              color: Colors.Aqua,
+              footer: footer(),
+            },
+          ],
+          allowedMentions: {
+            parse: [],
           },
-        ],
-        allowedMentions: {
-          parse: [],
-        },
+        });
       });
-    });
+    },
   },
 });

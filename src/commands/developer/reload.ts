@@ -19,15 +19,59 @@ export default new Command({
       type: ApplicationCommandOptionType.Subcommand,
     },
   ],
-  slash: async ({ client, interaction }) => {
-    if (!interaction.isChatInputCommand()) return;
-    const cmd = interaction.options.getSubcommand();
+  execute: {
+    interaction: async ({ client, interaction }) => {
+      const cmd = interaction.options.getSubcommand();
 
-    switch (cmd) {
-      case 'event':
+      switch (cmd) {
+        case 'event':
+          await client.loadEvents();
+
+          await interaction.followUp({
+            embeds: [
+              {
+                title:
+                  '<:check:1190622673999503390> イベントを再読み込みしました',
+                color: Colors.Aqua,
+                footer: footer(),
+              },
+            ],
+          });
+          break;
+        case 'all':
+          await interaction.followUp({
+            embeds: [
+              {
+                title: '<:check:1190622673999503390> Botを再起動します',
+                color: Colors.Purple,
+                footer: footer(),
+              },
+            ],
+          });
+
+          exec('pm2 restart ktrnds');
+      }
+    },
+    message: async ({ client, message, args }) => {
+      if (!args[0] || (args[0] !== 'event' && args[0] !== 'all'))
+        return message.reply({
+          embeds: [
+            {
+              title: 'エラーが発生しました',
+              description: '必要なパラメーターを指定してください',
+              color: Colors.Red,
+              footer: footer(),
+            },
+          ],
+          allowedMentions: {
+            parse: [],
+          },
+        });
+
+      if (args[0] === 'event') {
         await client.loadEvents();
 
-        await interaction.followUp({
+        await message.reply({
           embeds: [
             {
               title:
@@ -36,10 +80,12 @@ export default new Command({
               footer: footer(),
             },
           ],
+          allowedMentions: {
+            parse: [],
+          },
         });
-        break;
-      case 'all':
-        await interaction.followUp({
+      } else if (args[0] === 'all') {
+        await message.reply({
           embeds: [
             {
               title: '<:check:1190622673999503390> Botを再起動します',
@@ -47,57 +93,13 @@ export default new Command({
               footer: footer(),
             },
           ],
+          allowedMentions: {
+            parse: [],
+          },
         });
 
         exec('pm2 restart ktrnds');
-    }
-  },
-  chat: async ({ client, message, args }) => {
-    if (!args[0] || (args[0] !== 'event' && args[0] !== 'all'))
-      return message.reply({
-        embeds: [
-          {
-            title: 'エラーが発生しました',
-            description: '必要なパラメーターを指定してください',
-            color: Colors.Red,
-            footer: footer(),
-          },
-        ],
-        allowedMentions: {
-          parse: [],
-        },
-      });
-
-    if (args[0] === 'event') {
-      await client.loadEvents();
-
-      await message.reply({
-        embeds: [
-          {
-            title: '<:check:1190622673999503390> イベントを再読み込みしました',
-            color: Colors.Aqua,
-            footer: footer(),
-          },
-        ],
-        allowedMentions: {
-          parse: [],
-        },
-      });
-    } else if (args[0] === 'all') {
-      await message.reply({
-        embeds: [
-          {
-            title: '<:check:1190622673999503390> Botを再起動します',
-            color: Colors.Purple,
-            footer: footer(),
-          },
-        ],
-        allowedMentions: {
-          parse: [],
-        },
-      });
-
-      exec('pm2 restart ktrnds');
-    }
+      }
+    },
   },
 });
