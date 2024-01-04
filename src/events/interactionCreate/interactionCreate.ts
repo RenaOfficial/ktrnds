@@ -1,4 +1,5 @@
 import {
+  ApplicationCommandType,
   ChatInputCommandInteraction,
   Colors,
   CommandInteractionOptionResolver,
@@ -30,9 +31,20 @@ export default new Event('interactionCreate', async (interaction) => {
       return await interaction.reply({
         embeds: [
           {
-            title: 'エラーが発生しました',
             description: 'このコマンドはBot管理者限定です',
-            color: Colors.Red,
+            color: Colors.Blue,
+            footer: footer(),
+          },
+        ],
+      });
+    }
+
+    if (!command.execute.interaction) {
+      return await interaction.reply({
+        embeds: [
+          {
+            description: 'このコマンドはスラッシュコマンドに対応していません',
+            color: Colors.Yellow,
             footer: footer(),
           },
         ],
@@ -43,9 +55,11 @@ export default new Event('interactionCreate', async (interaction) => {
       ephemeral: command?.ephemeral || false,
     });
 
-    await command.slash({
-      client,
-      interaction: interaction as ChatInputCommandInteraction,
-    });
+    if (command.type === ApplicationCommandType.ChatInput) {
+      await command.execute.interaction({
+        client,
+        interaction: interaction as ChatInputCommandInteraction,
+      });
+    }
   }
 });

@@ -25,6 +25,21 @@ export default new Event('messageCreate', async (message) => {
 
   if (!command) return;
 
+  if (!command.execute.message) {
+    return await message.reply({
+      embeds: [
+        {
+          description: 'このコマンドはスラッシュコマンドに対応していません',
+          color: Colors.Yellow,
+          footer: footer(),
+        },
+      ],
+      allowedMentions: {
+        parse: [],
+      },
+    });
+  }
+
   if (command.isOwnerCommand && message.author.id !== '1004365048887660655') {
     return await message.reply({
       embeds: [
@@ -41,5 +56,5 @@ export default new Event('messageCreate', async (message) => {
     });
   }
 
-  await command.chat({ client, message, args });
+  await command.execute.message({ client, message, args });
 });
