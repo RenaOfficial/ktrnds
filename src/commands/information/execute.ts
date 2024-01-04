@@ -28,10 +28,10 @@ export default new Command({
           {
             title: 'Bash scriptを実行しました',
             description:
-              '実行したコマンド\n```\n' +
+              '実行したコマンド\n```\n$ ' +
               command +
               '\n```\n\n結果\n' +
-              '```js\n' +
+              '```\n' +
               res.slice(0, 2000) +
               '\n```',
             color: Colors.Aqua,
@@ -54,10 +54,10 @@ export default new Command({
           {
             title: 'Bash scriptを実行しました',
             description:
-              '実行したコマンド\n```\n' +
+              '実行したコマンド\n```\n$ ' +
               command +
               '\n```\n\n結果\n' +
-              '```js\n' +
+              '```\n' +
               res.slice(0, 2000) +
               '\n```',
             color: Colors.Aqua,
