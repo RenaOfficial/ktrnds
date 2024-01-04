@@ -1,6 +1,6 @@
-import { Command } from '@/lib/classes/Command';
+import { Command } from './src/lib/classes/Command';
 import { Colors } from 'discord.js';
-import { footer } from '@/lib/handlers/component/Embed';
+import { footer } from './src/lib/handlers/component/Embed';
 
 export default new Command({
   name: 'role',
