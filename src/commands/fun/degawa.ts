@@ -5,6 +5,7 @@ import { createCanvas, loadImage } from 'canvas';
 export default new Command({
   name: 'degawa',
   description: 'めっちゃ出川',
+  aliases: ["d"],
   execute: {
     interaction: async ({ client, interaction }) => {
       const imageBuffer = (await axios.get('http://degawa.ktrnds.com/random'))
