@@ -55,7 +55,7 @@ export default new Event('interactionCreate', async (interaction) => {
       ephemeral: command?.ephemeral || false,
     });
 
-    if (command.type === ApplicationCommandType.ChatInput) {
+    if (!command.type || command.type === ApplicationCommandType.ChatInput) {
       await command.execute.interaction({
         client,
         interaction: interaction as ChatInputCommandInteraction,
