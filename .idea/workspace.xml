@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de3c5624-0b45-4501-964f-515801f39154" name="変更" comment="">
-      <change beforePath="$PROJECT_DIR$/src/commands/fun/degawa.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/fun/degawa.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +68,7 @@
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "D:\\ktrnds\\node_modules\\prettier",
     "settings.editor.selected.configurable": "editor.preferences.folding",
-    "ts.external.directory.path": "D:\\ktrnds\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "/Volumes/Macintosh HD - Data/Node.js/ktrnds/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -107,6 +108,7 @@
       <workItem from="1704350340797" duration="47000" />
       <workItem from="1704350445672" duration="32000" />
       <workItem from="1704376229759" duration="3747000" />
+      <workItem from="1704483664550" duration="53000" />
     </task>
     <servers />
   </component>
