@@ -29,7 +29,7 @@ export default new Command({
               description:
                 '実行したコマンド\n```\n$ ' +
                 command +
-                '\n```\n\n結果\n' +
+                '\n```\n結果\n' +
                 '```\n' +
                 res.slice(0, 2000) +
                 '\n```',
@@ -55,7 +55,7 @@ export default new Command({
               description:
                 '実行したコマンド\n```\n$ ' +
                 command +
-                '\n```\n\n結果\n' +
+                '\n```\n結果\n' +
                 '```\n' +
                 res.slice(0, 2000) +
                 '\n```',
