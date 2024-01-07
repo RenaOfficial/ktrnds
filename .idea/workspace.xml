@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de3c5624-0b45-4501-964f-515801f39154" name="変更" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commands/fun/degawa.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/fun/degawa.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/events/interactionCreate/interactionCreate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/events/interactionCreate/interactionCreate.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/events/messageCreate/level.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/events/messageCreate/level.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/classes/ExtendedClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/classes/ExtendedClient.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +23,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -53,6 +61,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript デバッグ.accessdenied.html.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -66,7 +76,7 @@
     "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "D:\\ktrnds\\node_modules\\prettier",
+    "prettierjs.PrettierConfiguration.Package": "/Volumes/Macintosh HD - Data/Node.js/ktrnds/node_modules/prettier",
     "settings.editor.selected.configurable": "editor.preferences.folding",
     "ts.external.directory.path": "/Volumes/Macintosh HD - Data/Node.js/ktrnds/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
@@ -77,12 +87,22 @@
       <recent name="$PROJECT_DIR$/src/server" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/commands/context" />
-      <recent name="$PROJECT_DIR$/src/events/messageCreate" />
-      <recent name="$PROJECT_DIR$/src/events/ready" />
-      <recent name="$PROJECT_DIR$/src/events/messageUpdate" />
+      <recent name="$PROJECT_DIR$/src/lib/web/html" />
+      <recent name="$PROJECT_DIR$/src/events/interactionCreate" />
+      <recent name="$PROJECT_DIR$/src/lib" />
+      <recent name="$PROJECT_DIR$/src/commands/utility" />
+      <recent name="$PROJECT_DIR$/src/commands/developer" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="invalid_id.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ktrnds/src/lib/web/html/invalid_id.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript デバッグ.invalid_id.html" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="アプリケーションレベル" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -108,7 +128,8 @@
       <workItem from="1704350340797" duration="47000" />
       <workItem from="1704350445672" duration="32000" />
       <workItem from="1704376229759" duration="3747000" />
-      <workItem from="1704483664550" duration="155000" />
+      <workItem from="1704483664550" duration="381000" />
+      <workItem from="1704558594785" duration="12772000" />
     </task>
     <servers />
   </component>

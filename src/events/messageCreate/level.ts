@@ -15,6 +15,8 @@ export default new Event('messageCreate', async (message) => {
   if (!message.guild || message.author.bot || cooldowns.has(message.author.id))
     return;
 
+  if (message.guild.id !== '1149350818747781120') return;
+
   const xpToGive = getRandomXp(2, 10);
 
   const level = await Level.findOne({

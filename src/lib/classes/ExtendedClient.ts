@@ -16,6 +16,7 @@ import glob from 'glob';
 import mongoose from 'mongoose';
 import * as process from 'process';
 import moment from 'moment';
+import { run_server } from '@/lib/web/server';
 
 const globPromise = promisify(glob);
 
@@ -61,6 +62,8 @@ export class ExtendedClient extends Client {
       newMessage: Message<boolean> | PartialMessage;
     }
   >();
+  public webCaptcha: Collection<string, { GuildID: string; UserID: string }> =
+    new Collection<string, { GuildID: string; UserID: string }>();
 
   public calculateLevelXp(level: number): number {
     return 100 * level || 1;
@@ -104,6 +107,8 @@ export class ExtendedClient extends Client {
         'INFO'
       );
     });
+
+    run_server();
   }
 
   public async importFile<T>(filePath: string): Promise<T> {

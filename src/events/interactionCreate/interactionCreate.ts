@@ -2,7 +2,9 @@ import {
   ApplicationCommandType,
   ChatInputCommandInteraction,
   Colors,
-  CommandInteractionOptionResolver, MessageContextMenuCommandInteraction, UserContextMenuCommandInteraction,
+  CommandInteractionOptionResolver,
+  MessageContextMenuCommandInteraction,
+  UserContextMenuCommandInteraction,
 } from 'discord.js';
 import { client } from '@/index';
 import { Event } from '@/lib/classes/Event';
@@ -65,15 +67,15 @@ export default new Event('interactionCreate', async (interaction) => {
     if (command.type === ApplicationCommandType.Message) {
       await command.execute.interaction({
         client,
-        interaction: interaction as MessageContextMenuCommandInteraction
-      })
+        interaction: interaction as MessageContextMenuCommandInteraction,
+      });
     }
 
     if (command.type === ApplicationCommandType.User) {
       await command.execute.interaction({
         client,
-        interaction: interaction as UserContextMenuCommandInteraction
-      })
+        interaction: interaction as UserContextMenuCommandInteraction,
+      });
     }
   }
 });

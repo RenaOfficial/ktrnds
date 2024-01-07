@@ -5,13 +5,13 @@ import { createCanvas, loadImage } from 'canvas';
 export default new Command({
   name: 'degawa',
   description: 'めっちゃ出川',
-  aliases: ["d"],
+  aliases: ['d'],
   execute: {
     interaction: async ({ client, interaction }) => {
       const imageBuffer = (await axios.get('http://degawa.ktrnds.com/random'))
-        .data.data
+        .data.data;
 
-      const base64Data = `data:image/png;base64,${imageBuffer}`
+      const base64Data = `data:image/png;base64,${imageBuffer}`;
       const image = await loadImage(base64Data);
 
       const canvas = createCanvas(image.width, image.height);
@@ -30,9 +30,9 @@ export default new Command({
     },
     message: async ({ client, message, args }) => {
       const imageBuffer = (await axios.get('http://degawa.ktrnds.com/random'))
-        .data.data
+        .data.data;
 
-      const base64Data = `data:image/png;base64,${imageBuffer}`
+      const base64Data = `data:image/png;base64,${imageBuffer}`;
       const image = await loadImage(base64Data);
 
       const canvas = createCanvas(image.width, image.height);
@@ -48,9 +48,9 @@ export default new Command({
           },
         ],
         allowedMentions: {
-          parse: []
-        }
+          parse: [],
+        },
       });
-    }
+    },
   },
 });
