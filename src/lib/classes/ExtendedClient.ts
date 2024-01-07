@@ -16,7 +16,7 @@ import glob from 'glob';
 import mongoose from 'mongoose';
 import * as process from 'process';
 import moment from 'moment';
-import { run_server } from '@/lib/web/server';
+import { run_server } from '../../../archive/web/server';
 
 const globPromise = promisify(glob);
 

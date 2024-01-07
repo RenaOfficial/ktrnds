@@ -1,8 +1,8 @@
-import { Event } from '@/lib/classes/Event';
-import Schema from '@/lib/models/webCaptcha';
+import { Event } from '../src/lib/classes/Event';
+import Schema from '../src/lib/models/webCaptcha';
 import { randomUUID } from 'crypto';
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
-import { client } from '@/index';
+import { client } from '../src';
 
 export default new Event('interactionCreate', async (interaction) => {
   if (!interaction.isButton()) return;

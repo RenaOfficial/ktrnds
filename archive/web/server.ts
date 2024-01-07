@@ -1,8 +1,8 @@
 import axios from 'axios';
 import express from 'express';
-import Schema from '../models/webCaptcha';
-import { log } from '@/lib/classes/ExtendedClient';
-import { client } from '@/index';
+import Schema from '../../src/lib/models/webCaptcha';
+import { log } from '../../src/lib/classes/ExtendedClient';
+import { client } from '../../src';
 import { randomUUID } from 'crypto';
 
 const run_server = () => {

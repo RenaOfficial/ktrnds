@@ -1,4 +1,4 @@
-import { Command } from '@/lib/classes/Command';
+import { Command } from '../src/lib/classes/Command';
 import {
   ActionRowBuilder,
   ApplicationCommandOptionType,
@@ -7,8 +7,8 @@ import {
   codeBlock,
   Colors,
 } from 'discord.js';
-import { footer } from '@/lib/handlers/component/Embed';
-import Schema from '@/lib/models/webCaptcha';
+import { footer } from '../src/lib/handlers/component/Embed';
+import Schema from '../src/lib/models/webCaptcha';
 
 export default new Command({
   name: 'verification',

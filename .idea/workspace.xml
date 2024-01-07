@@ -6,8 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="de3c5624-0b45-4501-964f-515801f39154" name="変更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commands/utility/verification.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/utility/verification.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/web/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/web/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commands/utility/verification.ts" beforeDir="false" afterPath="$PROJECT_DIR$/archive/verification.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/events/interactionCreate/captcha.ts" beforeDir="false" afterPath="$PROJECT_DIR$/archive/captcha.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/classes/ExtendedClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/classes/ExtendedClient.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/web/html/cannot_get_token.html" beforeDir="false" afterPath="$PROJECT_DIR$/archive/web/html/cannot_get_token.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/web/html/cannot_get_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/archive/web/html/cannot_get_user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/web/html/guild_not_found.html" beforeDir="false" afterPath="$PROJECT_DIR$/archive/web/html/guild_not_found.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/web/html/invalid_code.html" beforeDir="false" afterPath="$PROJECT_DIR$/archive/web/html/invalid_code.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/web/html/invalid_id.html" beforeDir="false" afterPath="$PROJECT_DIR$/archive/web/html/invalid_id.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/web/html/user_diff.html" beforeDir="false" afterPath="$PROJECT_DIR$/archive/web/html/user_diff.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/web/html/verify_error.html" beforeDir="false" afterPath="$PROJECT_DIR$/archive/web/html/verify_error.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/web/html/verify_success.html" beforeDir="false" afterPath="$PROJECT_DIR$/archive/web/html/verify_success.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/web/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/archive/web/server.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,40 +63,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JavaScript デバッグ.accessdenied.html.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "javascript.nodejs.core.library.configured.version": "20.10.0",
-    "javascript.nodejs.core.library.typings.version": "20.10.5",
-    "last_opened_file_path": "/Volumes/Macintosh HD - Data/Node.js/ktrnds/src/server",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "/Volumes/Macintosh HD - Data/Node.js/ktrnds/node_modules/prettier",
-    "settings.editor.selected.configurable": "editor.preferences.folding",
-    "ts.external.directory.path": "/Volumes/Macintosh HD - Data/Node.js/ktrnds/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript デバッグ.accessdenied.html.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.10.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.10.5&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Volumes/Macintosh HD - Data/Node.js/ktrnds/src/server&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Volumes/Macintosh HD - Data/Node.js/ktrnds/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.folding&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Volumes/Macintosh HD - Data/Node.js/ktrnds/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/server" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/archive" />
       <recent name="$PROJECT_DIR$/src/lib/web/html" />
       <recent name="$PROJECT_DIR$/src/events/interactionCreate" />
       <recent name="$PROJECT_DIR$/src/lib" />
       <recent name="$PROJECT_DIR$/src/commands/utility" />
-      <recent name="$PROJECT_DIR$/src/commands/developer" />
     </key>
   </component>
   <component name="RunManager">
@@ -123,7 +134,8 @@
       <workItem from="1704350445672" duration="32000" />
       <workItem from="1704376229759" duration="3747000" />
       <workItem from="1704483664550" duration="381000" />
-      <workItem from="1704558594785" duration="14334000" />
+      <workItem from="1704558594785" duration="14919000" />
+      <workItem from="1704665814349" duration="90000" />
     </task>
     <servers />
   </component>

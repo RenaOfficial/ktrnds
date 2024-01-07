@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p . && tsc-alias && yarn copy_html",
+    "build": "tsc -p . && tsc-alias",
     "start": "node --trace-warnings dist/index.js",
     "dev": "run-s build start",
     "format": "prettier --write .",
@@ -11,7 +11,7 @@
     "git:pull": "git pull origin main",
     "pm2:restart": "pm2 restart ktrnds",
     "restart": "run-s git:fetch git:pull build pm2:restart",
-    "copy_html": "cp -r ./src/lib/web/html ./dist/lib/web"
+    "copy_html": "cp -r archive/web/html ./dist/lib/web"
   },
   "keywords": [],
   "author": "",
