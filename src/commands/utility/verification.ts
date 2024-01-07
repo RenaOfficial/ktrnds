@@ -59,7 +59,7 @@ export default new Command({
 
       await Schema.findOneAndUpdate(
         { MessageID: (await interaction.fetchReply()).id },
-        { RoleID: role?.id },
+        { RoleID: role?.id, GuildID: interaction.guild?.id },
         { new: true, upsert: true }
       );
     },

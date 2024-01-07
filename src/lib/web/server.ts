@@ -3,21 +3,11 @@ import express from 'express';
 import Schema from '../models/webCaptcha';
 import { log } from '@/lib/classes/ExtendedClient';
 import { client } from '@/index';
-import session from 'express-session';
 import { randomUUID } from 'crypto';
 
 const run_server = () => {
   const app = express();
   const port = 3003;
-
-  app.use(
-    session({
-      secret: randomUUID().toString(),
-      resave: false,
-      saveUninitialized: true,
-      cookie: { secure: false },
-    })
-  );
 
   const params = {
     client_id: process.env.CLIENT_ID,
@@ -27,15 +17,17 @@ const run_server = () => {
   };
 
   const oauth_url =
-    `https://discord.com/api/oauth2/authorize/?` + new URLSearchParams(params);
+    `https://discord.com/api/oauth2/authorize?` + new URLSearchParams(params);
 
   app.listen(port, () =>
     log('Server is ready: http://localhost:' + port, 'INFO')
   );
 
+  let id: string;
+
   app.get('/login', async (req, res) => {
     // IDを取得
-    const id: string = req.query.id as string;
+    id = req.query.id as string;
 
     if (!id) return res.sendFile(__dirname + '/html/invalid_id.html');
 
@@ -43,36 +35,37 @@ const run_server = () => {
 
     if (!data) return res.sendFile(__dirname + '/html/invalid_id.html');
 
-    req.session.id = id;
-
     res.redirect(oauth_url);
   });
 
   app.get('/callback', async (req, res) => {
     const code = req.query.code;
-    const id = req.session.id;
 
     if (!code) return res.sendFile(__dirname + '/html/invalid_code.html');
     if (!id) return res.sendFile(__dirname + '/html/invalid_id.html');
 
-    const headers = {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    };
+    const params = new URLSearchParams({
+      client_id: process.env.CLIENT_ID,
+      client_secret: process.env.CLIENT_SECRET,
+      redirect_uri: 'http://localhost:3003/callback',
+      code: code as string,
+      grant_type: 'authorization_code',
+    });
 
     const token_response = await axios
-      .post(
-        'https://discord.com/api/oauth2/token',
-        `client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&grant_type=authorization_code&code=${req.query.code}`,
-        {
-          headers: headers,
-        }
-      )
+      .post('https://discord.com/api/oauth2/token', params, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      })
       .catch(() => {
         res.sendFile(__dirname + '/html/cannot_get_token.html');
       });
 
-    if (!token_response) return;
-    if (!token_response.data?.access_token) return;
+    if (!token_response)
+      return res.sendFile(__dirname + '/html/cannot_get_token.html');
+    if (!token_response.data)
+      return res.sendFile(__dirname + '/html/cannot_get_token.html');
 
     const user_response = await axios
       .get('https://discordapp.com/api/v8/users/@me', {
@@ -86,7 +79,7 @@ const run_server = () => {
 
     const collection = client.webCaptcha.get(id);
 
-    const captcha_data = await Schema.findOne({ MessageID: collection });
+    const captcha_data = await Schema.findOne({ GuildID: collection?.GuildID });
     const guild = client.guilds.cache.get(captcha_data?.GuildID || '');
 
     const userId = user_response?.data.id;
@@ -106,10 +99,10 @@ const run_server = () => {
       member.roles
         .add(`${data.RoleID}`)
         .then(() => {
-          res.sendFile(__dirname + '/web/verify_success.html');
+          res.sendFile(__dirname + '/html/verify_success.html');
         })
         .catch((e) => {
-          res.sendFile(__dirname + '/web/verify_error.html');
+          res.sendFile(__dirname + '/html/verify_error.html');
           console.log(e);
         });
     }
