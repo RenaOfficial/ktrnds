@@ -1,7 +1,7 @@
-import { Command } from '@/lib/classes/Command';
+import { Command } from '../../lib/classes/Command';
 import { ApplicationCommandOptionType, Colors } from 'discord.js';
 import { exec } from 'child_process';
-import { footer } from '@/lib/handlers/component/Embed';
+import { footer } from '../../lib/handlers/component/Embed';
 
 export default new Command({
   name: 'reload',

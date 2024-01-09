@@ -1,7 +1,7 @@
-import { Command } from '@/lib/classes/Command';
-import { getCommands } from '@/lib/handlers/function/getCommands';
+import { Command } from '../../lib/classes/Command';
+import { getCommands } from '../../lib/handlers/function/getCommands';
 import { ActionRowBuilder, Colors, StringSelectMenuBuilder } from 'discord.js';
-import { footer } from '@/lib/handlers/component/Embed';
+import { footer } from '../../lib/handlers/component/Embed';
 
 export default new Command({
   name: 'help',

@@ -1,7 +1,7 @@
-import { Event } from '@/lib/classes/Event';
-import { client } from '@/index';
+import { Event } from '../../lib/classes/Event';
+import { client } from '../../index';
 import { Colors } from 'discord.js';
-import { footer } from '@/lib/handlers/component/Embed';
+import { footer } from '../../lib/handlers/component/Embed';
 
 export default new Event('messageCreate', async (message) => {
   const prefix = '.';

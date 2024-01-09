@@ -1,5 +1,5 @@
-import { Command } from '@/lib/classes/Command';
-import { serverInfo } from '@/lib/handlers/component/Embed';
+import { Command } from '../../lib/classes/Command';
+import { serverInfo } from '../../lib/handlers/component/Embed';
 
 export default new Command({
   name: 'server',

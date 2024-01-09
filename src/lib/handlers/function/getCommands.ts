@@ -1,11 +1,11 @@
-import { CommandType } from '@/lib/interfaces/Command';
+import { CommandType } from '../../interfaces/Command';
 import {
   ApplicationCommandOptionType,
   ApplicationCommandType,
 } from 'discord.js';
 import glob from 'glob';
 import { promisify } from 'util';
-import { client } from '@/index';
+import { client } from '../../../index';
 
 const globPromise = promisify(glob);
 

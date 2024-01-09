@@ -1,5 +1,5 @@
-import { Command } from '@/lib/classes/Command';
-import { pingEmbed } from '@/lib/handlers/component/Embed';
+import { Command } from '../../lib/classes/Command';
+import { pingEmbed } from '../../lib/handlers/component/Embed';
 
 export default new Command({
   name: 'ping',

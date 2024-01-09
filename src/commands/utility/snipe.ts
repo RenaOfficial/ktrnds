@@ -1,11 +1,11 @@
-import { Command } from '@/lib/classes/Command';
+import { Command } from '../../lib/classes/Command';
 import {
   APIEmbed,
   ApplicationCommandOptionType,
   ApplicationCommandType,
   Colors,
 } from 'discord.js';
-import { footer } from '@/lib/handlers/component/Embed';
+import { footer } from '../../lib/handlers/component/Embed';
 
 export default new Command({
   name: 'snipe',

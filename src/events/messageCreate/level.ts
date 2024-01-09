@@ -1,6 +1,6 @@
-import { Event } from '@/lib/classes/Event';
-import Level from '@/lib/models/level';
-import { client } from '@/index';
+import { Event } from '../../lib/classes/Event';
+import Level from '../../lib/models/level';
+import { client } from '../../index';
 import { Colors } from 'discord.js';
 
 const cooldowns = new Set();

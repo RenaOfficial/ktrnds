@@ -1,9 +1,9 @@
 import express, { NextFunction, Request, Response } from 'express';
-import { log } from '@/lib/classes/ExtendedClient';
-import captcha from '@/lib/models/captcha';
-import captcha_sessions from '@/lib/models/captcha_sessions';
+import { log } from '../classes/ExtendedClient';
+import captcha from '../models/captcha';
+import captcha_sessions from '../models/captcha_sessions';
 import axios from 'axios';
-import { client } from '@/index';
+import { client } from '../../index';
 
 export const run_server = () => {
   const app = express();

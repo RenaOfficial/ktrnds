@@ -7,14 +7,14 @@ import {
   Message,
   PartialMessage,
 } from 'discord.js';
-import { CommandType } from '@/lib/interfaces/Command';
-import { Event } from '@/lib/classes/Event';
+import { CommandType } from '../interfaces/Command';
+import { Event } from './Event';
 import { promisify } from 'util';
 import glob from 'glob';
 import mongoose from 'mongoose';
 import * as process from 'process';
 import moment from 'moment';
-import { run_server } from '@/lib/api/server';
+import { run_server } from '../api/server';
 
 const globPromise = promisify(glob);
 

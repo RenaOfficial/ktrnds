@@ -6,9 +6,9 @@ import {
   MessageContextMenuCommandInteraction,
   UserContextMenuCommandInteraction,
 } from 'discord.js';
-import { client } from '@/index';
-import { Event } from '@/lib/classes/Event';
-import { footer } from '@/lib/handlers/component/Embed';
+import { client } from '../../index';
+import { Event } from '../../lib/classes/Event';
+import { footer } from '../../lib/handlers/component/Embed';
 
 export default new Event('interactionCreate', async (interaction) => {
   if (interaction.isCommand()) {

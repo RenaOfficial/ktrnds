@@ -1,4 +1,4 @@
-import { Event } from '@/lib/classes/Event';
+import { Event } from '../../lib/classes/Event';
 
 export default new Event('messageCreate', async (message) => {
   if (message.guild?.id !== '1149350818747781120' || !message.channel) return;

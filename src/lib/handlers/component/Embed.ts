@@ -6,7 +6,7 @@ import {
   Guild,
   TextChannel,
 } from 'discord.js';
-import { client } from '@/index';
+import { client } from '../../../index';
 import osu from 'node-os-utils';
 import {
   Boost,
@@ -26,8 +26,8 @@ import {
   Stats02,
   Stats03,
   Voice,
-} from '@/lib/util/emojis';
-import { createBar } from '@/lib/util/createBar';
+} from '../../util/emojis';
+import { createBar } from '../../util/createBar';
 
 const footer = (): APIEmbedFooter => {
   return {

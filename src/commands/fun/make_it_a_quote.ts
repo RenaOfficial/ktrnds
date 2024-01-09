@@ -1,7 +1,7 @@
-import { Command } from '@/lib/classes/Command';
+import { Command } from '../../lib/classes/Command';
 import axios from 'axios';
 import { ApplicationCommandType, Colors } from 'discord.js';
-import { footer } from '@/lib/handlers/component/Embed';
+import { footer } from '../../lib/handlers/component/Embed';
 
 export default new Command({
   name: 'Make it a Quote',

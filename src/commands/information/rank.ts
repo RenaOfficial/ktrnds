@@ -1,12 +1,12 @@
-import { Command } from '@/lib/classes/Command';
+import { Command } from '../../lib/classes/Command';
 import {
   ApplicationCommandOptionType,
   AttachmentBuilder,
   Colors,
 } from 'discord.js';
-import Level from '@/lib/models/level';
+import Level from '../../lib/models/level';
 import canvacord from 'canvacord';
-import { footer } from '@/lib/handlers/component/Embed';
+import { footer } from '../../lib/handlers/component/Embed';
 
 export default new Command({
   name: 'rank',

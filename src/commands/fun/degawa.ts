@@ -1,4 +1,4 @@
-import { Command } from '@/lib/classes/Command';
+import { Command } from '../../lib/classes/Command';
 import axios from 'axios';
 import { createCanvas, loadImage } from 'canvas';
 

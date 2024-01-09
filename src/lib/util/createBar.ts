@@ -5,7 +5,7 @@ import {
   Full_InnerG,
   Full_LeftG,
   Full_RightG,
-} from '@/lib/util/emojis';
+} from './emojis';
 
 export function createBar(currentValue: number, maxValue: number) {
   const barLength = 14;
