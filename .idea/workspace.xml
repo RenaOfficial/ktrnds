@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="de3c5624-0b45-4501-964f-515801f39154" name="変更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archive/captcha.ts" beforeDir="false" afterPath="$PROJECT_DIR$/archive/captcha.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archive/verification.ts" beforeDir="false" afterPath="$PROJECT_DIR$/archive/verification.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archive/web/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/archive/web/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/classes/ExtendedClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/classes/ExtendedClient.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/models/webCaptcha.ts" beforeDir="false" afterPath="$PROJECT_DIR$/archive/webCaptcha.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/Enviroment.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/Enviroment.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +126,7 @@
       <workItem from="1704483664550" duration="381000" />
       <workItem from="1704558594785" duration="14919000" />
       <workItem from="1704665814349" duration="469000" />
-      <workItem from="1704724787693" duration="11167000" />
+      <workItem from="1704724787693" duration="11627000" />
     </task>
     <servers />
   </component>
