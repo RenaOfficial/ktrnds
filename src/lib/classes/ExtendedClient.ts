@@ -1,10 +1,8 @@
 import {
-  APIInteractionGuildMember,
   ApplicationCommandDataResolvable,
   Client,
   ClientEvents,
   Collection,
-  GuildMember,
   IntentsBitField,
   Message,
   PartialMessage,
@@ -16,7 +14,7 @@ import glob from 'glob';
 import mongoose from 'mongoose';
 import * as process from 'process';
 import moment from 'moment';
-import { run_server } from '../../../archive/web/server';
+import { run_server } from '@/lib/api/server';
 
 const globPromise = promisify(glob);
 
@@ -91,6 +89,7 @@ export class ExtendedClient extends Client {
         'INFO'
       );
     });
+
     this.login(process.env.CLIENT_TOKEN).then(() => {
       const endTime = process.hrtime(startTime);
       const processingTimeMs = Math.floor(endTime[0] * 1000 + endTime[1] / 1e6);
@@ -99,6 +98,7 @@ export class ExtendedClient extends Client {
         'INFO'
       );
     });
+
     mongoose.connect(process.env.DATABASE_CONNECTION_URI).then(() => {
       const endTime = process.hrtime(startTime);
       const processingTimeMs = Math.floor(endTime[0] * 1000 + endTime[1] / 1e6);

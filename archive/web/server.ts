@@ -1,6 +1,6 @@
 import axios from 'axios';
 import express from 'express';
-import Schema from '../../src/lib/models/webCaptcha';
+import Schema from '../webCaptcha';
 import { log } from '../../src/lib/classes/ExtendedClient';
 import { client } from '../../src';
 import { randomUUID } from 'crypto';

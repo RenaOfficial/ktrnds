@@ -1,5 +1,5 @@
 import { Event } from '../src/lib/classes/Event';
-import Schema from '../src/lib/models/webCaptcha';
+import Schema from './webCaptcha';
 import { randomUUID } from 'crypto';
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 import { client } from '../src';

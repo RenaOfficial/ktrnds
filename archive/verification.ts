@@ -8,7 +8,7 @@ import {
   Colors,
 } from 'discord.js';
 import { footer } from '../src/lib/handlers/component/Embed';
-import Schema from '../src/lib/models/webCaptcha';
+import Schema from './webCaptcha';
 
 export default new Command({
   name: 'verification',

@@ -5,6 +5,7 @@ declare global {
       CLIENT_ID: string;
       CLIENT_SECRET: string;
       DATABASE_CONNECTION_URI: string;
+      REDIRECT_URI: string;
     }
   }
 }
